@@ -333,25 +333,19 @@ table { border-collapse: collapse; width: 100%; }
 .mech-axis line { stroke: rgba(255, 255, 255, .28); stroke-width: 2; stroke-dasharray: 6 9; }
 .mech-axis path { stroke: rgba(255, 255, 255, .4); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-.mech-ground { stroke: rgba(255, 255, 255, .22); stroke-width: 2; }
-.mech-obstacle { fill: url(#hatch); stroke: rgba(136, 206, 214, .45); stroke-width: 2; }
+/* 틈 치수 표시 · 라벨 */
+.mech-gapdim { stroke: var(--teal-400); }
+.mech-gaplabel { fill: var(--teal-400); font-size: 12px; font-weight: 700; }
 
-/* 충돌 표시 — 잠금 해제(평상시) 상태에서만 보인다 */
-.mech-impact { stroke: #F0A9A9; stroke-width: 3; fill: none; stroke-linecap: round; transition: opacity .3s var(--ease); }
+/* 앞바퀴가 틈에 빠지는 지점 — 잠금 해제(평상시) 상태에서만 보인다 */
+.mech-impact { transition: opacity .3s var(--ease); }
 
-/* 휠체어 본체 — 평상시엔 문턱 앞에서 제자리 걸림, 잠금 시엔 문턱을 왕복하며 넘어간다 */
-.mech-chair { transform-origin: 222px 225px; }
+/* 휠체어 본체.
+   회전 기준점을 뒷바퀴 접지점에 두어, 앞바퀴가 틈에 빠질 때
+   뒷바퀴는 바닥에 붙은 채 앞쪽만 내려앉도록 한다. */
+.mech-chair { transform-origin: 96px 225px; }
 
-.mech-chair-frame path { stroke: rgba(255, 255, 255, .5); stroke-width: 6; stroke-linecap: round; fill: none; }
-.mech-chair-cap { fill: rgba(255, 255, 255, .5); }
-
-.mech-tire { fill: none; stroke: #fff; stroke-width: 4; }
-.mech-rim { fill: none; stroke: rgba(255, 255, 255, .4); stroke-width: 2; }
-.mech-rearwheel line { stroke: rgba(255, 255, 255, .32); stroke-width: 2; }
-.mech-hub { fill: var(--teal-400); }
-
-.mech-fork { stroke: #fff; stroke-width: 5; stroke-linecap: round; }
-.mech-frontwheel { fill: rgba(255, 255, 255, .08); stroke: #fff; stroke-width: 4; }
+.mech-frontwheel { fill: rgba(255, 255, 255, .08); }
 
 .mech-lockring {
   fill: none; stroke: var(--teal-400); stroke-width: 3; stroke-dasharray: 5 5;
@@ -360,7 +354,7 @@ table { border-collapse: collapse; width: 100%; }
   transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 
-.mech-lever { transform-origin: 222px 176px; transition: transform .5s var(--ease); }
+.mech-lever { transform-origin: 216px 178px; transition: transform .5s var(--ease); }
 .mech-lever line { stroke: var(--teal-400); stroke-width: 5; stroke-linecap: round; }
 .mech-lever circle { fill: var(--teal-400); }
 
@@ -385,22 +379,24 @@ table { border-collapse: collapse; width: 100%; }
 .mech-svg.is-locked .mech-status-free { opacity: 0; }
 .mech-svg.is-locked .mech-status-lock { opacity: 1; }
 
-/* 평상시: 문턱 앞에서 덜컹거리며 제자리 걸림 */
-.mech-svg:not(.is-locked) .mech-chair { animation: chairStuck 1.4s ease-in-out infinite; }
+/* 평상시: 틈 앞까지 굴러가다 앞바퀴가 빠지고, 앞이 내려앉았다가 다시 물러난다.
+   회전 기준점이 뒷바퀴 접지점이라 뒷바퀴는 붙어 있고 앞쪽만 기운다. */
+.mech-svg:not(.is-locked) .mech-chair { animation: chairStuck 3.2s ease-in-out infinite; }
 @keyframes chairStuck {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25%      { transform: translate(-3px, 0) rotate(-0.8deg); }
-  50%      { transform: translate(2px, -1px) rotate(0.5deg); }
-  75%      { transform: translate(-2px, 0) rotate(-0.4deg); }
+  0%, 12%   { transform: translate(0, 0) rotate(0deg); }
+  30%       { transform: translate(9px, 0) rotate(0deg); }
+  45%       { transform: translate(11px, 0) rotate(5deg); }
+  57%       { transform: translate(10px, 0) rotate(3.4deg); }
+  69%       { transform: translate(11px, 0) rotate(5deg); }
+  88%, 100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-/* 잠금 시: 문턱을 왕복하며 안전하게 넘어간다 (alternate로 되돌아올 때도 같은 동작을 재생) */
-.mech-svg.is-locked .mech-chair { animation: chairCross 4.6s cubic-bezier(.45, .05, .55, .95) infinite alternate; }
+/* 잠금 시: 흔들림 없이 틈을 건너 전동차로 들어갔다가 되돌아온다.
+   alternate 라 되돌아오는 구간도 같은 곡선을 그대로 재생해 끊김이 없다. */
+.mech-svg.is-locked .mech-chair { animation: chairCross 4.4s ease-in-out infinite alternate; }
 @keyframes chairCross {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  45%  { transform: translate(46px, -14px) rotate(-4deg); }
-  60%  { transform: translate(72px, -9px) rotate(-1.5deg); }
-  100% { transform: translate(95px, 0) rotate(0deg); }
+  0%, 14%   { transform: translate(0, 0); }
+  86%, 100% { transform: translate(88px, 0); }
 }
 
 .mech-state {
@@ -789,13 +785,13 @@ table { border-collapse: collapse; width: 100%; }
    (태블릿 이상에서는 도식과 함께 자연스럽게 커지므로 건드리지 않는다) */
 @media (max-width: 520px) {
   .mech-label { font-size: 15px; }
-  .mech-caption { font-size: 14px; }
+  .mech-caption, .mech-gaplabel { font-size: 14px; }
   .mech-status-free, .mech-status-lock { font-size: 15px; }
 }
 @media (max-width: 380px) {
   .mech-label { font-size: 17px; }
-  .mech-caption { font-size: 16px; }
-  .mech-status-free, .mech-status-lock { font-size: 17px; }
+  .mech-caption, .mech-gaplabel { font-size: 16px; }
+  .mech-status-free, .mech-status-lock { font-size: 16px; }
 }
 
 @media (max-width: 520px) {

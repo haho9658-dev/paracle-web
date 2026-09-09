@@ -13,7 +13,9 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="css/style.css">
+<!-- ?v= 는 캐시 무효화용. css/js를 고칠 때마다 숫자를 올려야 방문자가 옛 파일을 쓰지 않는다.
+     (HTML만 갱신되고 CSS가 캐시에 남으면 스타일이 통째로 어긋난다) -->
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -184,74 +186,125 @@
     <!-- Interactive mechanism demo -->
     <div class="mech reveal">
       <div class="mech-stage">
+        <!-- 지하철 승강장에서 전동차로 승차하는 장면.
+             모든 도형에 presentation attribute(fill/stroke)를 직접 넣어 두었다.
+             CSS가 늦게 오거나 캐시가 어긋나도 검은 원으로 깨지지 않게 하기 위함. -->
         <svg class="mech-svg" id="mechSvg" viewBox="0 0 400 300" role="img"
-             aria-label="캐스터 락 작동 원리 도식 — 휠체어가 문턱을 넘어가는 모습을 옆에서 본 그림">
-          <defs>
-            <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="9" stroke="rgba(136,206,214,.42)" stroke-width="3.5"/>
-            </pattern>
-          </defs>
+             aria-label="캐스터 락 작동 원리 도식 — 휠체어가 지하철 승강장과 전동차 사이의 틈을 건너는 모습">
 
           <!-- 진행 방향 -->
-          <g class="mech-axis">
-            <line x1="36" y1="26" x2="356" y2="26"/>
-            <path d="M348 19 L360 26 L348 33"/>
-            <text x="196" y="15" class="mech-caption" text-anchor="middle">진행 방향</text>
+          <g class="mech-axis" fill="none" stroke="#ffffff" stroke-opacity=".3">
+            <line x1="30" y1="26" x2="348" y2="26" stroke-width="2" stroke-dasharray="6 9"/>
+            <path d="M340 19 L352 26 L340 33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <text x="188" y="15" class="mech-caption" text-anchor="middle"
+                fill="#ffffff" fill-opacity=".5" font-size="12">진행 방향</text>
+
+          <!-- 전동차 실내 (천장·안쪽 벽) -->
+          <g class="mech-train" fill="none" stroke="#ffffff" stroke-opacity=".18" stroke-width="2">
+            <line x1="276" y1="112" x2="386" y2="112"/>
+            <line x1="386" y1="112" x2="386" y2="224"/>
           </g>
 
-          <!-- 바닥 -->
-          <line class="mech-ground" x1="20" y1="225" x2="380" y2="225"/>
+          <!-- 승강장 바닥 / 전동차 바닥 -->
+          <g class="mech-ground" fill="none" stroke="#ffffff" stroke-opacity=".34" stroke-width="3" stroke-linecap="round">
+            <line x1="16" y1="225" x2="238" y2="225"/>
+            <line x1="270" y1="225" x2="386" y2="225"/>
+          </g>
+          <!-- 틈의 양쪽 벽(수직 단면) -->
+          <g class="mech-edge" fill="none" stroke="#ffffff" stroke-opacity=".2" stroke-width="2">
+            <line x1="238" y1="226" x2="238" y2="243"/>
+            <line x1="270" y1="226" x2="270" y2="243"/>
+          </g>
 
-          <!-- 문턱 / 틈 -->
-          <rect class="mech-obstacle" x="246" y="195" width="40" height="30" rx="4"/>
-          <text x="266" y="248" class="mech-caption" text-anchor="middle">문턱·틈</text>
+          <!-- 틈 치수 표시 -->
+          <g class="mech-gapdim" fill="none" stroke="#88CED6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="240" y1="234" x2="268" y2="234"/>
+            <path d="M245 230 L240 234 L245 238"/>
+            <path d="M263 230 L268 234 L263 238"/>
+          </g>
 
-          <!-- 충돌 표시 (평상시에만 노출) -->
-          <path class="mech-impact" d="M231 191 q10 -12 0 -24"/>
-          <path class="mech-impact" d="M243 195 q13 -15 0 -30"/>
+          <text x="118" y="258" class="mech-caption" text-anchor="middle"
+                fill="#ffffff" fill-opacity=".5" font-size="12">승강장</text>
+          <text x="254" y="258" class="mech-gaplabel" text-anchor="middle"
+                fill="#88CED6" font-size="12" font-weight="700">지하철 틈</text>
+          <text x="330" y="258" class="mech-caption" text-anchor="middle"
+                fill="#ffffff" fill-opacity=".5" font-size="12">전동차</text>
 
-          <!-- 휠체어 : 이 그룹 전체가 문턱 앞에서 흔들리거나(평상시) 문턱을 넘는다(잠금) -->
+          <!-- 앞바퀴가 틈에 빠지는 지점 (평상시에만 노출) -->
+          <g class="mech-impact" fill="none" stroke="#F0A9A9" stroke-width="3" stroke-linecap="round">
+            <path d="M246 197 q9 -11 0 -22"/>
+            <path d="M257 201 q12 -14 0 -28"/>
+          </g>
+
+          <!-- 휠체어 : 평상시엔 앞바퀴가 틈에 빠져 멈추고, 잠금 시엔 틈을 건너 승차한다 -->
           <g class="mech-chair" id="mechChair">
-            <g class="mech-chair-frame">
-              <path d="M95 185 L78 120"/>
-              <path d="M73 120 L140 120"/>
-              <path d="M73 120 L68 70"/>
-              <path d="M140 120 L222 176"/>
+            <!-- 메인 프레임 : 등받이 · 시트 · 뒷바퀴 지지 · 앞 프레임 · 손잡이 -->
+            <g class="mech-chair-frame" fill="none" stroke="#ffffff" stroke-opacity=".58"
+               stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M76 76 L86 140"/>
+              <path d="M86 140 L166 140"/>
+              <path d="M92 141 L96 185"/>
+              <path d="M166 140 L216 178"/>
+              <path d="M76 76 L61 70"/>
             </g>
-            <circle class="mech-chair-cap" cx="66" cy="68" r="4"/>
+            <circle class="mech-chair-cap" cx="59" cy="69" r="4" fill="#ffffff" fill-opacity=".58" stroke="none"/>
 
-            <!-- 뒷바퀴 -->
+            <!-- 팔걸이 -->
+            <g class="mech-armrest" fill="none" stroke="#ffffff" stroke-opacity=".34"
+               stroke-width="3.5" stroke-linecap="round">
+              <path d="M101 114 L157 114"/>
+              <path d="M101 114 L100 139"/>
+              <path d="M157 114 L159 137"/>
+            </g>
+
+            <!-- 발판 -->
+            <g class="mech-footrest" fill="none" stroke="#ffffff" stroke-opacity=".42"
+               stroke-width="3.5" stroke-linecap="round">
+              <path d="M180 151 L193 179"/>
+              <path d="M188 181 L208 181"/>
+            </g>
+
+            <!-- 뒷바퀴 (타이어 · 핸드림 · 스포크 · 허브) -->
             <g class="mech-rearwheel">
-              <circle class="mech-tire" cx="95" cy="185" r="40"/>
-              <circle class="mech-rim" cx="95" cy="185" r="29"/>
-              <line x1="59" y1="185" x2="131" y2="185"/>
-              <line x1="95" y1="149" x2="95" y2="221"/>
-              <line x1="120.5" y1="159.5" x2="69.5" y2="210.5"/>
-              <line x1="69.5" y1="159.5" x2="120.5" y2="210.5"/>
-              <circle class="mech-hub" cx="95" cy="185" r="5"/>
+              <circle class="mech-tire" cx="96" cy="185" r="40" fill="none" stroke="#ffffff" stroke-width="4"/>
+              <circle class="mech-rim" cx="96" cy="185" r="30" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="2"/>
+              <g class="mech-spokes" fill="none" stroke="#ffffff" stroke-opacity=".3" stroke-width="2">
+                <line x1="60" y1="185" x2="132" y2="185"/>
+                <line x1="96" y1="149" x2="96" y2="221"/>
+                <line x1="121" y1="160" x2="71" y2="210"/>
+                <line x1="71" y1="160" x2="121" y2="210"/>
+              </g>
+              <circle class="mech-hub" cx="96" cy="185" r="5" fill="#88CED6" stroke="none"/>
             </g>
 
             <!-- 앞 캐스터 (요 축 회전부) -->
-            <circle class="mech-hub" cx="222" cy="176" r="4"/>
-            <line class="mech-fork" x1="222" y1="176" x2="222" y2="207"/>
-            <circle class="mech-frontwheel" cx="222" cy="207" r="18"/>
-            <circle class="mech-hub" cx="222" cy="207" r="4"/>
-            <circle class="mech-lockring" cx="222" cy="176" r="13"/>
+            <line class="mech-fork" x1="216" y1="178" x2="216" y2="207"
+                  fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+            <circle class="mech-frontwheel" cx="216" cy="207" r="18" fill="none" stroke="#ffffff" stroke-width="4"/>
+            <circle class="mech-hub" cx="216" cy="207" r="4" fill="#88CED6" stroke="none"/>
+            <circle class="mech-hub" cx="216" cy="178" r="4" fill="#88CED6" stroke="none"/>
+            <circle class="mech-lockring" cx="216" cy="178" r="13"
+                    fill="none" stroke="#88CED6" stroke-width="3" stroke-dasharray="5 5"/>
 
             <!-- 레버 -->
             <g class="mech-lever" id="mechLever">
-              <line x1="222" y1="176" x2="241" y2="155"/>
-              <circle cx="241" cy="155" r="6"/>
+              <line x1="216" y1="178" x2="235" y2="157" fill="none" stroke="#88CED6" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="235" cy="157" r="6" fill="#88CED6" stroke="none"/>
             </g>
-            <text x="249" y="151" class="mech-label" id="mechLeverLabel">레버 해제</text>
+            <text x="243" y="152" class="mech-label" id="mechLeverLabel"
+                  fill="#A9DDE3" font-size="12.5" font-weight="700">레버 해제</text>
 
-            <!-- 보조 바퀴 (잠금 시에만 지면에 닿아 지지) -->
-            <circle class="mech-assistwheel" cx="236" cy="210" r="9"/>
+            <!-- 보조 바퀴 (잠금 시 지면에 닿아 틈을 건너는 지지점이 된다) -->
+            <circle class="mech-assistwheel" cx="236" cy="211" r="9"
+                    fill="none" stroke="#88CED6" stroke-width="3.5" stroke-dasharray="4 5"/>
           </g>
 
           <!-- 상태 문구 -->
-          <text x="200" y="278" class="mech-status-free" text-anchor="middle">요 축 자유 회전 → 걸림·전복 위험</text>
-          <text x="200" y="278" class="mech-status-lock" text-anchor="middle">요 축 고정 → 직진 안정성 확보</text>
+          <text x="200" y="284" class="mech-status-free" text-anchor="middle"
+                fill="#F0A9A9" font-size="13" font-weight="700">요 축 자유 회전 → 틈에 빠짐·전복 위험</text>
+          <text x="200" y="284" class="mech-status-lock" text-anchor="middle"
+                fill="#A9DDE3" font-size="13" font-weight="700" opacity="0">요 축 고정 → 틈을 건너 안전하게 승차</text>
         </svg>
 
         <div class="mech-state" id="mechState">
@@ -694,6 +747,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>
