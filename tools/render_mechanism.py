@@ -54,14 +54,25 @@ HTML = os.path.join(ROOT, "index.html")
 CSS = os.path.join(ROOT, "css", "style.css")
 
 VW, VH = 440, 320           # viewBox
+FILL = 0.96                 # viewBox 를 채우는 비율. 낮출수록 도식이 작아진다
+TOP_PAD, BOTTOM_PAD = 12, 48    # 위 여백 · 아래 상태 문구 자리
 
 # ─────────────────────────────────────────────── 장면 치수 (월드 단위)
-PX = 118                    # 승강장 좌우 반폭
-PY0 = -140                  # 승강장 안쪽 끝
+PX = 145                    # 승강장 좌우 반폭 (차체 폭과 맞춘다)
+PY0 = -155                  # 승강장 안쪽 끝
 TY0, TY1 = -40, -14         # 점자블록
 GY0, GY1 = 0, 30            # 틈
 TRY = 118                   # 전동차 안쪽 끝
-DH, DZ = 62, 118            # 출입문 반폭 · 높이
+
+# 전동차 앞면 : 차체가 문보다 위로 올라가고 양옆에 창이 있어야 전동차로 읽힌다.
+# 차체는 승강장(PX)보다 넓게 잡는다 — 실제로도 전동차가 더 길고, 창을 넣을 폭도 생긴다.
+CAR_X = 145                 # 차체 좌우 반폭 (승강장과 맞춘다)
+CAR_Z = 162                 # 차체 높이 (문 위로 올라가되 압도하지 않을 만큼)
+DH, DZ = 70, 140            # 출입문 반폭 · 높이
+DOOR_W = 26                 # 열린 미닫이 문짝 폭
+WIN_X0, WIN_X1 = 104, 138   # 창문 좌우 (문짝 바깥)
+WIN_Z0, WIN_Z1 = 88, 134    # 창문 상하
+DOOR_GLASS = (6, 74, 128)   # 문 유리 : 문짝 테두리 여백, 아래, 위
 
 # 휠체어 (로컬 좌표, +Y 가 진행 방향, 원점은 뒷바퀴 접지 중앙)
 RW_R, RW_X, RW_Y = 42, 46, -10          # 뒷바퀴
@@ -135,15 +146,46 @@ add('<!-- 전동차 바닥 -->')
 add('<path d="%s" fill="#0C3A66" stroke="#ffffff" stroke-opacity=".2" stroke-width="1.5"/>'
     % poly([(-PX, GY1, 0), (PX, GY1, 0), (PX, TRY, 0), (-PX, TRY, 0)]))
 
-add('<!-- 전동차 출입문 -->')
-add('<g fill="none" stroke="#88CED6" stroke-opacity=".55" stroke-width="3" stroke-linecap="round">'
+add('<!-- 전동차 앞면 : 차체 · 창문 · 출입문 -->')
+# 차체 벽 (문을 뺀 세 조각 : 좌 · 우 · 문 위)
+add('<g class="iso-carbody" fill="#08294A" fill-opacity=".55" stroke="#ffffff" '
+    'stroke-opacity=".18" stroke-width="1.5" stroke-linejoin="round">'
+    '<path d="%s"/><path d="%s"/><path d="%s"/></g>'
+    % (poly([(-CAR_X, GY1, 0), (-DH, GY1, 0), (-DH, GY1, CAR_Z), (-CAR_X, GY1, CAR_Z)]),
+       poly([(DH, GY1, 0), (CAR_X, GY1, 0), (CAR_X, GY1, CAR_Z), (DH, GY1, CAR_Z)]),
+       poly([(-DH, GY1, DZ), (DH, GY1, DZ), (DH, GY1, CAR_Z), (-DH, GY1, CAR_Z)])))
+
+# 창문 (열린 문짝 바깥쪽)
+add('<g class="iso-carwindow" fill="#123E6B" fill-opacity=".95" stroke="#88CED6" '
+    'stroke-opacity=".4" stroke-width="2" stroke-linejoin="round">'
+    '<path d="%s"/><path d="%s"/></g>'
+    % (poly([(-WIN_X1, GY1, WIN_Z0), (-WIN_X0, GY1, WIN_Z0),
+             (-WIN_X0, GY1, WIN_Z1), (-WIN_X1, GY1, WIN_Z1)]),
+       poly([(WIN_X0, GY1, WIN_Z0), (WIN_X1, GY1, WIN_Z0),
+             (WIN_X1, GY1, WIN_Z1), (WIN_X0, GY1, WIN_Z1)])))
+
+# 열린 미닫이문 : 문틀 바깥으로 물러난 문짝과 그 유리
+_g, _z0, _z1 = DOOR_GLASS
+add('<g class="iso-cardoor" fill="#0B3A66" fill-opacity=".95" stroke="#88CED6" '
+    'stroke-opacity=".5" stroke-width="2" stroke-linejoin="round">'
+    '<path d="%s"/><path d="%s"/></g>'
+    % (poly([(-DH - DOOR_W, GY1, 0), (-DH, GY1, 0), (-DH, GY1, DZ), (-DH - DOOR_W, GY1, DZ)]),
+       poly([(DH, GY1, 0), (DH + DOOR_W, GY1, 0), (DH + DOOR_W, GY1, DZ), (DH, GY1, DZ)])))
+add('<g class="iso-cardoor-glass" fill="#1A5A9B" fill-opacity=".95" stroke="#88CED6" '
+    'stroke-opacity=".35" stroke-width="1.5" stroke-linejoin="round">'
+    '<path d="%s"/><path d="%s"/></g>'
+    % (poly([(-DH - DOOR_W + _g, GY1, _z0), (-DH - _g, GY1, _z0),
+             (-DH - _g, GY1, _z1), (-DH - DOOR_W + _g, GY1, _z1)]),
+       poly([(DH + _g, GY1, _z0), (DH + DOOR_W - _g, GY1, _z0),
+             (DH + DOOR_W - _g, GY1, _z1), (DH + _g, GY1, _z1)])))
+
+# 출입문 개구부 테두리 · 차체 윗선
+add('<g fill="none" stroke="#88CED6" stroke-opacity=".65" stroke-width="3.4" stroke-linecap="round">'
     '<path d="%s"/><path d="%s"/><path d="%s"/></g>'
     % (seg((-DH, GY1, 0), (-DH, GY1, DZ)), seg((DH, GY1, 0), (DH, GY1, DZ)),
        seg((-DH, GY1, DZ), (DH, GY1, DZ))))
-add('<g fill="#08294A" fill-opacity=".55" stroke="#ffffff" stroke-opacity=".18" stroke-width="1.5">'
-    '<path d="%s"/><path d="%s"/></g>'
-    % (poly([(-PX, GY1, 0), (-DH, GY1, 0), (-DH, GY1, DZ), (-PX, GY1, DZ)]),
-       poly([(DH, GY1, 0), (PX, GY1, 0), (PX, GY1, DZ), (DH, GY1, DZ)])))
+add('<path d="%s" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="2.5" '
+    'stroke-linecap="round"/>' % seg((-CAR_X, GY1, CAR_Z), (CAR_X, GY1, CAR_Z)))
 
 
 def chair():
@@ -225,13 +267,16 @@ body = "\n          ".join(parts)
 
 # ─────────────────────────────────────────────── viewBox 자동 맞춤
 corners = [(-PX, PY0, 0), (PX, PY0, 0), (PX, TRY, 0), (-PX, TRY, 0),
-           (-PX, GY1, DZ), (PX, GY1, DZ), (0, CHAIR_Y + BACK_Y - 16, BACK_Z + 16)]
+           (-CAR_X, GY1, 0), (CAR_X, GY1, 0),
+           (-CAR_X, GY1, CAR_Z), (CAR_X, GY1, CAR_Z),
+           (0, CHAIR_Y + BACK_Y - 16, BACK_Z + 16)]
 xs = [P(*c)[0] for c in corners]
 ys = [P(*c)[1] for c in corners]
 bw, bh = max(xs) - min(xs), max(ys) - min(ys)
-S = min((VW - 26) / bw, (VH - 50) / bh)          # 하단 50 은 상태 문구 자리
+avail_h = VH - TOP_PAD - BOTTOM_PAD
+S = min((VW - 26) / bw, avail_h / bh) * FILL
 OX = (VW - bw * S) / 2.0 - min(xs) * S
-OY = 16 - min(ys) * S
+OY = TOP_PAD + (avail_h - bh * S) / 2.0 - min(ys) * S
 
 
 def scr(x, y, z):
@@ -241,17 +286,18 @@ def scr(x, y, z):
 
 # ─────────────────────────────────────────────── 라벨 · 진행 방향
 labels = []
-for w, txt, cls, anchor in [((-86, -122, 0), "승강장", "mech-caption", "middle"),
-                            ((104, 15, 0), "틈", "mech-gaplabel", "start"),
-                            ((88, 92, 4), "전동차", "mech-caption", "middle")]:
+# 승강장 라벨은 넣지 않는다 — 노란 점자블록이 이미 승강장임을 말해주고,
+# 휠체어·승강장 경계선과 겹쳐 지저분해진다.
+for w, txt, cls, anchor in [((112, 18, 0), "틈", "mech-gaplabel", "start"),
+                            ((104, 96, 4), "전동차", "mech-caption", "middle")]:
     sx, sy = scr(*w)
     fill = '#88CED6" font-weight="700' if cls == "mech-gaplabel" else '#ffffff" fill-opacity=".5'
     labels.append('<text x="%s" y="%s" class="%s" text-anchor="%s" fill="%s" font-size="12">%s</text>'
                   % (n1(sx), n1(sy), cls, anchor, fill, txt))
 
-a0, a1 = scr(-104, -108, 2), scr(-104, -46, 2)
+a0, a1 = scr(-132, -148, 2), scr(-132, -88, 2)
 ang = math.degrees(math.atan2(a1[1] - a0[1], a1[0] - a0[0]))
-ax, ay = scr(-118, -74, 34)
+ax, ay = scr(-146, -114, 30)
 arrow = ('<g class="mech-axis" fill="none" stroke="#ffffff" stroke-opacity=".3">'
          '<path d="M%s %s L%s %s" stroke-width="2" stroke-dasharray="6 8"/>'
          '<path d="M-7 -6 L0 0 L-7 6" transform="translate(%s %s) rotate(%s)" stroke-width="2.5" '
