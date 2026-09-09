@@ -625,7 +625,8 @@ table { border-collapse: collapse; width: 100%; }
 /* =========================================================
    MARKET
    ========================================================= */
-.market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 64px; }
+.market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 14px; }
+.market-stats-foot { font-size: .78rem; color: var(--ink-mute); }
 .market-stat {
   padding: 30px 26px; background: #fff; border-radius: var(--radius);
   border: 1px solid var(--line); box-shadow: var(--shadow-sm);

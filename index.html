@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- ?v= 는 캐시 무효화용. css/js를 고칠 때마다 숫자를 올려야 방문자가 옛 파일을 쓰지 않는다.
      (HTML만 갱신되고 CSS가 캐시에 남으면 스타일이 통째로 어긋난다) -->
-<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
 
@@ -83,7 +83,7 @@
           <dd><span class="counter" data-target="41.2" data-decimals="1">0</span><span class="unit">%</span></dd>
         </div>
         <div class="hero-stat">
-          <dt>국내 수동 휠체어 이용 지체장애인</dt>
+          <dt>국내 등록 지체장애인</dt>
           <dd><span class="counter" data-target="113">0</span><span class="unit">만 명</span></dd>
         </div>
       </dl>
@@ -257,7 +257,9 @@
 
         <div class="problem-chart problem-chart-compact">
           <p class="chart-sub">
-            전동보장구 이용자 287명 조사 — 사고 경험 비율과, 사고 원인 중 '턱·장애물 걸림'이 차지하는 비중입니다.
+            <span class="chart-tag">2016년 조사</span>
+            전동보장구 3년 이상 이용자 287명 대상 — 사고 경험 비율과, 사고 원인 중 '턱·장애물 걸림'이
+            차지하는 비중입니다. 캐스터 휠 구조의 근본적 한계는 지금도 동일합니다.
           </p>
           <div class="bar-chart" style="--scale-max:100">
             <ol class="bar-chart-list">
@@ -278,6 +280,7 @@
             <span class="bar-chart-axis-ticks"><i>0%</i><i>50%</i><i>100%</i></span>
             <span></span>
           </div>
+          <p class="chart-foot">출처: 한국소비자원, 전동보장구 이용자 안전실태조사 (2016)</p>
         </div>
       </article>
 
@@ -431,7 +434,8 @@
               캐스터 락 모듈
             </th>
             <th scope="col">FreeWheel <small>미국</small></th>
-            <th scope="col">Scewo / WHILL <small>스위스·일본</small></th>
+            <th scope="col">WHILL <small>일본</small></th>
+            <th scope="col">Scewo <small>스위스</small></th>
           </tr>
         </thead>
         <tbody>
@@ -440,11 +444,13 @@
             <td class="is-ours"><span class="chip chip-good">무전력 (기계식)</span></td>
             <td>무전력 (기계식)</td>
             <td>전동 / 배터리</td>
+            <td>전동 / 배터리</td>
           </tr>
           <tr>
             <th scope="row">기존 휠체어 호환</th>
             <td class="is-ours"><span class="chip chip-good">그대로 부착 가능</span></td>
             <td>그대로 부착 가능</td>
+            <td>휠체어 자체 교체 필요</td>
             <td>휠체어 자체 교체 필요</td>
           </tr>
           <tr>
@@ -452,12 +458,14 @@
             <td class="is-ours"><span class="chip chip-good">평상시 자유 회전 유지</span></td>
             <td>회전 반경 커짐 (제약)</td>
             <td>비교적 양호</td>
+            <td>회전 반경 큼 (162kg, 정지 시 115cm)</td>
           </tr>
           <tr>
             <th scope="row">참고 가격대</th>
             <td class="is-ours"><span class="chip chip-good">약 5만 원대</span></td>
-            <td>약 30~50만 원대</td>
-            <td>수천만 원대</td>
+            <td>약 80~120만 원대</td>
+            <td>약 500~700만 원대</td>
+            <td>약 5,000만 원대</td>
           </tr>
         </tbody>
       </table>
@@ -465,7 +473,9 @@
     </div>
 
     <p class="compare-foot reveal">
-      ※ 참고 가격대는 공개된 제품 정보를 바탕으로 한 추정치이며, 당사 목표 소비자가는 부품 원가·제조 방식 검토를 거쳐 확정될 예정입니다.
+      ※ 참고 가격대는 각사 공식 판매 페이지의 공개 가격(FreeWheel $599~899, WHILL 기본형 $4,999~,
+      Scewo BRO 32,850 CHF~)을 2026년 9월 환율(약 1,336원/달러)로 환산한 추정치이며, 환율·구성에 따라
+      달라질 수 있습니다. 당사 목표 소비자가는 부품 원가·제조 방식 검토를 거쳐 확정될 예정입니다.
     </p>
   </div>
 </section>
@@ -494,17 +504,23 @@
       </div>
       <div class="market-stat reveal" data-delay="160">
         <p class="market-stat-value"><span class="counter" data-target="271">0</span><span class="unit">조 원</span></p>
-        <p class="market-stat-label">2030년 국내 시니어 산업 규모</p>
+        <p class="market-stat-label">2030년 국내 시니어 산업 규모(상단 전망)</p>
       </div>
       <div class="market-stat reveal" data-delay="240">
         <p class="market-stat-value"><span class="counter" data-target="1613">0</span><span class="unit">만 명</span></p>
         <p class="market-stat-label">국내 교통약자 (전체 인구의 31.5%)</p>
       </div>
     </div>
+    <p class="market-stats-foot">
+      ※ 시니어 산업 규모는 기관별 전망이 갈립니다 — 경희대 에이지테크연구소는 2030년 126조~271조 원
+      (271조 원은 상단 전망치), 경희대 고령친화융합연구센터는 168조 원으로 추정합니다.
+    </p>
 
     <!-- 글로벌 보조기술 시장 성장 곡선. 사업계획서에 실린 두 실측 값(2025년 304억 달러,
          2034년 652억 달러)만 근거이며, 그 사이 곡선은 두 값이 내포하는 CAGR로 보간한
-         추정선임을 각주로 명시한다 — 없는 정밀도를 지어내지 않는다. -->
+         추정선임을 각주로 명시한다 — 없는 정밀도를 지어내지 않는다. 두 값은 여러 시장조사기관
+         추정치 중 Custom Market Insights 발표치와 정확히 일치함을 확인했다(다른 기관들은
+         2025년 239~365억 달러, 2034년 483~882억 달러, CAGR 8.1~10.3%로 더 넓게 추정). -->
     <div class="chart-panel reveal">
       <div class="chart-head">
         <h3>글로벌 보조기술 시장 성장 전망</h3>
@@ -535,8 +551,9 @@
         </svg>
       </div>
       <p class="chart-foot">
-        ※ 2025년·2034년 값은 사업계획서 원자료이며, 중간 구간은 두 값에 내포된 연평균 성장률(8.9%)로 보간한 추정 곡선입니다.
-        출처: 보조기술(Assistive Technology) 시장 전망 자료 종합.
+        ※ 2025년·2034년 값은 시장조사기관 Custom Market Insights 발표치이며, 중간 구간은 두 값에
+        내포된 연평균 성장률(8.9%)로 보간한 추정 곡선입니다. 다른 시장조사기관은 2025년 239~365억
+        달러, 2034년 483~882억 달러, CAGR 8.1~10.3%로 더 넓게 추정하는 등 기관별 편차가 있습니다.
       </p>
     </div>
 
@@ -547,8 +564,8 @@
           <li>
             <span class="target-step">1차</span>
             <div>
-              <h4>수동 휠체어 이용 지체장애인</h4>
-              <p>2024년 기준 약 113만 명 — 전체 등록장애인 263만 명의 43.0%</p>
+              <h4>국내 등록 지체장애인</h4>
+              <p>2024년 기준 약 113만 명 — 전체 등록장애인 263만 명의 43.0% (수동·전동 휠체어, 목발 등 보행 보조기기 이용자 포함)</p>
             </div>
           </li>
           <li>
@@ -824,6 +841,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/main.js?v=11"></script>
+<script src="js/main.js?v=12"></script>
 </body>
 </html>
