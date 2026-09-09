@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- ?v= 는 캐시 무효화용. css/js를 고칠 때마다 숫자를 올려야 방문자가 옛 파일을 쓰지 않는다.
      (HTML만 갱신되고 CSS가 캐시에 남으면 스타일이 통째로 어긋난다) -->
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -149,9 +149,14 @@
           수동 휠체어 앞바퀴는 좌우로 자유롭게 회전(요 축 회전)하도록 설계되어 평지 조향에는 유리하지만,
           턱이나 틈처럼 좁은 장애물을 지날 때는 <strong>옆으로 틀어지거나 끼어 넘어질 위험</strong>이 커집니다.
         </p>
-        <div class="problem-quote">
-          한국소비자원 조사 결과 전동보장구 이용자 287명 중 <b>102명(35.5%)</b>이 사고를 경험했고,
-          사고 유형 중 <b>'턱·장애물에 의한 걸림'이 41.2%</b>로 가장 많았습니다.
+        <p class="problem-meter-note">한국소비자원 · 전동보장구 이용자 287명 조사</p>
+        <div class="problem-meter" data-value="35.5">
+          <div class="problem-meter-bar"><span></span></div>
+          <div class="problem-meter-label"><span>사고 경험 있음</span><b>35.5%</b></div>
+        </div>
+        <div class="problem-meter is-danger" data-value="41.2">
+          <div class="problem-meter-bar"><span></span></div>
+          <div class="problem-meter-label"><span>그중 '턱·장애물 걸림'</span><b>41.2%</b></div>
         </div>
       </article>
 
@@ -166,6 +171,115 @@
           기존 휠체어의 장점은 그대로 두면서<br>저비용으로 <strong>안정성만 더하는 해법</strong>이 비어 있습니다.
         </p>
       </article>
+    </div>
+
+    <!-- 지역별 저상버스 보급률 : 국토교통부 2024년 조사 원자료를 그대로 옮긴 막대 리스트.
+         .chart-panel 이 .reveal 을 겸하므로 채움 애니메이션은 기존 IntersectionObserver로 동작한다. -->
+    <div class="chart-panel reveal">
+      <div class="chart-head">
+        <h3>지역별 저상버스 보급률</h3>
+        <span class="chart-tag">2024년 기준</span>
+        <p class="chart-sub">전국 17개 시·도 중 서울이 가장 높고 울산이 가장 낮습니다 — 최대 3.8배 차이입니다.</p>
+      </div>
+
+      <div class="bar-chart">
+      <ol class="bar-chart-list">
+        <li class="bar-row is-max" style="--v:71.0">
+          <span class="bar-row-label">서울</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">71.0%</span>
+        </li>
+        <li class="bar-row" style="--v:58.3">
+          <span class="bar-row-label">세종</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">58.3%</span>
+        </li>
+        <li class="bar-row" style="--v:48.4">
+          <span class="bar-row-label">대구</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">48.4%</span>
+        </li>
+        <li class="bar-row" style="--v:48.1">
+          <span class="bar-row-label">경남</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">48.1%</span>
+        </li>
+        <li class="bar-row" style="--v:47.1">
+          <span class="bar-row-label">충북</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">47.1%</span>
+        </li>
+        <li class="bar-row" style="--v:44.7">
+          <span class="bar-row-label">강원</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">44.7%</span>
+        </li>
+        <li class="bar-row" style="--v:44.0">
+          <span class="bar-row-label">부산</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">44.0%</span>
+        </li>
+        <li class="bar-row" style="--v:43.7">
+          <span class="bar-row-label">대전</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">43.7%</span>
+        </li>
+        <li class="bar-row" style="--v:41.8">
+          <span class="bar-row-label">광주</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">41.8%</span>
+        </li>
+        <li class="bar-row" style="--v:38.7">
+          <span class="bar-row-label">전북</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">38.7%</span>
+        </li>
+        <li class="bar-row" style="--v:36.0">
+          <span class="bar-row-label">경기</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">36.0%</span>
+        </li>
+        <li class="bar-row" style="--v:32.0">
+          <span class="bar-row-label">충남</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">32.0%</span>
+        </li>
+        <li class="bar-row" style="--v:30.1">
+          <span class="bar-row-label">전남</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">30.1%</span>
+        </li>
+        <li class="bar-row" style="--v:28.9">
+          <span class="bar-row-label">인천</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">28.9%</span>
+        </li>
+        <li class="bar-row" style="--v:28.6">
+          <span class="bar-row-label">경북</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">28.6%</span>
+        </li>
+        <li class="bar-row" style="--v:22.5">
+          <span class="bar-row-label">제주</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">22.5%</span>
+        </li>
+        <li class="bar-row is-min" style="--v:18.7">
+          <span class="bar-row-label">울산</span>
+          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+          <span class="bar-row-value">18.7%</span>
+        </li>
+
+      </ol>
+      <div class="bar-chart-avgline" aria-hidden="true"><span>전국 평균 44.4%</span></div>
+      </div>
+
+      <div class="chart-legend" aria-hidden="true">
+        <span class="chart-legend-item"><span class="chart-legend-dot is-max"></span>최고 (서울)</span>
+        <span class="chart-legend-item"><span class="chart-legend-dot is-avg"></span>전국 평균 44.4%</span>
+        <span class="chart-legend-item"><span class="chart-legend-dot is-min"></span>최저 (울산)</span>
+      </div>
+      <p class="chart-foot">출처: 국토교통부, '2024년 교통약자 이동편의 실태조사' (2025)</p>
     </div>
   </div>
 </section>
@@ -374,6 +488,44 @@
         <p class="market-stat-value"><span class="counter" data-target="1613">0</span><span class="unit">만 명</span></p>
         <p class="market-stat-label">국내 교통약자 (전체 인구의 31.5%)</p>
       </div>
+    </div>
+
+    <!-- 글로벌 보조기술 시장 성장 곡선. 사업계획서에 실린 두 실측 값(2025년 304억 달러,
+         2034년 652억 달러)만 근거이며, 그 사이 곡선은 두 값이 내포하는 CAGR로 보간한
+         추정선임을 각주로 명시한다 — 없는 정밀도를 지어내지 않는다. -->
+    <div class="chart-panel reveal">
+      <div class="chart-head">
+        <h3>글로벌 보조기술 시장 성장 전망</h3>
+        <span class="chart-tag">CAGR 8.9%</span>
+        <p class="chart-sub">2025년 304억 달러에서 2034년 652억 달러로, 9년간 규모가 두 배 이상 커집니다.</p>
+      </div>
+
+      <div class="growth-chart-wrap">
+        <svg class="growth-svg" viewBox="0 0 600 230" role="img"
+             aria-label="글로벌 보조기술 시장 규모 성장 곡선. 2025년 304억 달러에서 2034년 652억 달러로 연평균 8.9% 성장.">
+          <line class="growth-baseline" x1="46" y1="190" x2="554" y2="190"/>
+
+          <path class="growth-area"
+                d="M46.0 173.2 L102.4 163.0 L158.9 151.8 L215.3 139.6 L271.8 126.4 L328.2 112.0 L384.7 96.3 L441.1 79.3 L497.6 60.7 L554.0 40.5 L554.0 190.0 L46.0 190.0 Z"/>
+          <path class="growth-line"
+                d="M46.0 173.2 L102.4 163.0 L158.9 151.8 L215.3 139.6 L271.8 126.4 L328.2 112.0 L384.7 96.3 L441.1 79.3 L497.6 60.7 L554.0 40.5"/>
+
+          <circle class="growth-dot is-start" cx="46.0" cy="173.2" r="5"/>
+          <circle class="growth-dot is-end" cx="554.0" cy="40.5" r="5"/>
+
+          <text class="growth-value-label is-start" x="46" y="158" text-anchor="start">304억 달러</text>
+          <text class="growth-tick-label" x="46" y="210" text-anchor="start">2025년</text>
+
+          <text class="growth-value-label is-end" x="554" y="26" text-anchor="end">652억 달러</text>
+          <text class="growth-tick-label" x="554" y="210" text-anchor="end">2034년</text>
+
+          <text class="growth-tick-label" x="328" y="210" text-anchor="middle">2030년</text>
+        </svg>
+      </div>
+      <p class="chart-foot">
+        ※ 2025년·2034년 값은 사업계획서 원자료이며, 중간 구간은 두 값에 내포된 연평균 성장률(8.9%)로 보간한 추정 곡선입니다.
+        출처: 보조기술(Assistive Technology) 시장 전망 자료 종합.
+      </p>
     </div>
 
     <div class="market-split">
@@ -660,6 +812,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/main.js?v=8"></script>
+<script src="js/main.js?v=9"></script>
 </body>
 </html>
