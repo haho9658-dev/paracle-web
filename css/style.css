@@ -364,15 +364,15 @@ table { border-collapse: collapse; width: 100%; }
 .mech-svg.is-locked .mech-status-lock { opacity: 1; }
 
 /* 잠금: 요 축이 고정되어 두 앞바퀴가 직진 자세로 멈춘다 */
-.mech-svg.is-locked .iso-caster-a { animation: none; transform: matrix(11.31, -4.6, 0, -14.62, 14.85, -36.19); }
-.mech-svg.is-locked .iso-caster-b { animation: none; transform: matrix(11.31, -4.6, 0, -14.62, 53.03, -20.66); }
+.mech-svg.is-locked .iso-caster-a { animation: none; transform: matrix(13.11, -3.73, 0, -14.62, 23.83, -34.81); }
+.mech-svg.is-locked .iso-caster-b { animation: none; transform: matrix(13.11, -3.73, 0, -14.62, 54.81, -16.82); }
 
 /* 잠금: 흔들림 없이 틈을 건너 전동차 안으로 들어갔다가 되돌아온다.
    이동량은 월드 +Y 로 112 만큼 간 것을 투영한 값 (96.99, -56). */
 .mech-svg.is-locked .mech-chair { animation: isoEnter 5s ease-in-out infinite alternate; }
 @keyframes isoEnter {
   0%, 16%   { transform: translate(0, 0); }
-  84%, 100% { transform: translate(83.44px, -33.94px); }
+  84%, 100% { transform: translate(96.66px, -27.53px); }
 }
 
 /* 평상시: 두 앞바퀴가 제각각 돌아 틈 앞에서 방향을 못 잡고 덜컹거린다 */
@@ -382,41 +382,41 @@ table { border-collapse: collapse; width: 100%; }
 
 @keyframes isoStuck {
   0%, 100% { transform: translate(0, 0); }
-  30%      { transform: translate(7.09px, -2.88px); }
-  45%      { transform: translate(9.18px, -3.73px); }
-  60%      { transform: translate(7.09px, -2.88px); }
+  30%      { transform: translate(8.22px, -2.34px); }
+  45%      { transform: translate(10.63px, -3.03px); }
+  60%      { transform: translate(8.22px, -2.34px); }
 }
 
 @keyframes isoCasterA {
-  0%       { transform: matrix(11.31, -4.6, 0, -14.62, 14.85, -36.19); }
-  8.333%   { transform: matrix(13.71, -3.35, 0, -14.62, 14.85, -36.19); }
-  16.67%   { transform: matrix(15.3, -1.9, 0, -14.62, 14.85, -36.19); }
-  25%      { transform: matrix(15.94, -0.57, 0, -14.62, 14.85, -36.19); }
-  33.33%   { transform: matrix(15.45, -1.68, 0, -14.62, 14.85, -36.19); }
-  41.67%   { transform: matrix(13.42, -3.54, 0, -14.62, 14.85, -36.19); }
-  50%      { transform: matrix(11.31, -4.6, 0, -14.62, 14.85, -36.19); }
-  58.33%   { transform: matrix(9.18, -5.33, 0, -14.62, 14.85, -36.19); }
-  66.67%   { transform: matrix(7.26, -5.8, 0, -14.62, 14.85, -36.19); }
-  75%      { transform: matrix(5.73, -6.08, 0, -14.62, 14.85, -36.19); }
-  83.33%   { transform: matrix(7.76, -5.69, 0, -14.62, 14.85, -36.19); }
-  91.67%   { transform: matrix(10.07, -5.06, 0, -14.62, 14.85, -36.19); }
-  100%     { transform: matrix(11.31, -4.6, 0, -14.62, 14.85, -36.19); }
+  0%       { transform: matrix(13.11, -3.73, 0, -14.62, 23.83, -34.81); }
+  8.333%   { transform: matrix(14.94, -2.33, 0, -14.62, 23.83, -34.81); }
+  16.67%   { transform: matrix(15.88, -0.79, 0, -14.62, 23.83, -34.81); }
+  25%      { transform: matrix(15.94, 0.57, 0, -14.62, 23.83, -34.81); }
+  33.33%   { transform: matrix(15.94, -0.57, 0, -14.62, 23.83, -34.81); }
+  41.67%   { transform: matrix(14.73, -2.54, 0, -14.62, 23.83, -34.81); }
+  50%      { transform: matrix(13.11, -3.73, 0, -14.62, 23.83, -34.81); }
+  58.33%   { transform: matrix(11.31, -4.6, 0, -14.62, 23.83, -34.81); }
+  66.67%   { transform: matrix(9.63, -5.2, 0, -14.62, 23.83, -34.81); }
+  75%      { transform: matrix(8.24, -5.58, 0, -14.62, 23.83, -34.81); }
+  83.33%   { transform: matrix(10.07, -5.06, 0, -14.62, 23.83, -34.81); }
+  91.67%   { transform: matrix(12.08, -4.27, 0, -14.62, 23.83, -34.81); }
+  100%     { transform: matrix(13.11, -3.73, 0, -14.62, 23.83, -34.81); }
 }
 
 @keyframes isoCasterB {
-  0%       { transform: matrix(11.31, -4.6, 0, -14.62, 53.03, -20.66); }
-  8.333%   { transform: matrix(13.71, -3.35, 0, -14.62, 53.03, -20.66); }
-  16.67%   { transform: matrix(15.3, -1.9, 0, -14.62, 53.03, -20.66); }
-  25%      { transform: matrix(15.94, -0.57, 0, -14.62, 53.03, -20.66); }
-  33.33%   { transform: matrix(15.45, -1.68, 0, -14.62, 53.03, -20.66); }
-  41.67%   { transform: matrix(13.42, -3.54, 0, -14.62, 53.03, -20.66); }
-  50%      { transform: matrix(11.31, -4.6, 0, -14.62, 53.03, -20.66); }
-  58.33%   { transform: matrix(9.18, -5.33, 0, -14.62, 53.03, -20.66); }
-  66.67%   { transform: matrix(7.26, -5.8, 0, -14.62, 53.03, -20.66); }
-  75%      { transform: matrix(5.73, -6.08, 0, -14.62, 53.03, -20.66); }
-  83.33%   { transform: matrix(7.76, -5.69, 0, -14.62, 53.03, -20.66); }
-  91.67%   { transform: matrix(10.07, -5.06, 0, -14.62, 53.03, -20.66); }
-  100%     { transform: matrix(11.31, -4.6, 0, -14.62, 53.03, -20.66); }
+  0%       { transform: matrix(13.11, -3.73, 0, -14.62, 54.81, -16.82); }
+  8.333%   { transform: matrix(14.94, -2.33, 0, -14.62, 54.81, -16.82); }
+  16.67%   { transform: matrix(15.88, -0.79, 0, -14.62, 54.81, -16.82); }
+  25%      { transform: matrix(15.94, 0.57, 0, -14.62, 54.81, -16.82); }
+  33.33%   { transform: matrix(15.94, -0.57, 0, -14.62, 54.81, -16.82); }
+  41.67%   { transform: matrix(14.73, -2.54, 0, -14.62, 54.81, -16.82); }
+  50%      { transform: matrix(13.11, -3.73, 0, -14.62, 54.81, -16.82); }
+  58.33%   { transform: matrix(11.31, -4.6, 0, -14.62, 54.81, -16.82); }
+  66.67%   { transform: matrix(9.63, -5.2, 0, -14.62, 54.81, -16.82); }
+  75%      { transform: matrix(8.24, -5.58, 0, -14.62, 54.81, -16.82); }
+  83.33%   { transform: matrix(10.07, -5.06, 0, -14.62, 54.81, -16.82); }
+  91.67%   { transform: matrix(12.08, -4.27, 0, -14.62, 54.81, -16.82); }
+  100%     { transform: matrix(13.11, -3.73, 0, -14.62, 54.81, -16.82); }
 }
 
 .mech-state {
