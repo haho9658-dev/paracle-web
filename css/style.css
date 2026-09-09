@@ -645,6 +645,27 @@ table { border-collapse: collapse; width: 100%; }
   box-shadow: 0 0 0 4px rgba(136, 206, 214, .22);
 }
 .field input.is-error, .field textarea.is-error { border-color: #E08585; box-shadow: 0 0 0 4px rgba(224, 133, 133, .16); }
+
+/* 스팸봇 유인 필드 — 화면에서 감추되 display:none은 피한다
+   (일부 봇은 display:none 필드를 건너뛴다) */
+.gotcha {
+  position: absolute !important; left: -9999px !important;
+  width: 1px; height: 1px; opacity: 0; pointer-events: none;
+}
+
+.consent {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 4px 0 18px; cursor: pointer;
+}
+.consent input {
+  flex: none; width: 20px; height: 20px; margin: 2px 0 0;
+  accent-color: var(--navy-800); cursor: pointer;
+}
+.consent span { font-size: .82rem; line-height: 1.65; color: var(--ink-mute); }
+.consent strong { display: block; color: var(--navy-800); font-weight: 700; margin-bottom: 2px; }
+
+.btn:disabled { opacity: .6; cursor: progress; transform: none; }
+
 .form-status { margin-top: 14px; font-size: .88rem; text-align: center; min-height: 1.5em; font-weight: 600; }
 .form-status.is-ok { color: var(--teal-500); }
 .form-status.is-err { color: #C86A6A; }

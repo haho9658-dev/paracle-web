@@ -246,15 +246,25 @@
   renderMech();
 
   /* ---------------------------------------------------------
-     8. Contact form (front-end validation only)
+     8. Contact form — Formspree 전송
      --------------------------------------------------------- */
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('formSubmit');
+  var submitLabel = submitBtn.textContent;
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  // action에 실제 폼 ID가 들어가기 전까지는 전송을 시도하지 않는다.
+  var isConfigured = form.action.indexOf('YOUR_FORM_ID') === -1;
 
   function setStatus(message, type) {
     status.textContent = message;
     status.className = 'form-status' + (type ? ' is-' + type : '');
+  }
+
+  function setBusy(busy) {
+    submitBtn.disabled = busy;
+    submitBtn.textContent = busy ? '보내는 중…' : submitLabel;
   }
 
   form.addEventListener('submit', function (e) {
@@ -263,6 +273,7 @@
     var name = form.elements.name;
     var email = form.elements.email;
     var message = form.elements.message;
+    var consent = form.elements.consent;
 
     [name, email, message].forEach(function (f) { f.classList.remove('is-error'); });
 
@@ -278,10 +289,42 @@
       message.classList.add('is-error'); message.focus();
       return setStatus('문의 내용을 10자 이상 입력해 주세요.', 'err');
     }
+    if (!consent.checked) {
+      consent.focus();
+      return setStatus('개인정보 수집·이용에 동의해 주셔야 문의를 보낼 수 있습니다.', 'err');
+    }
 
-    // 백엔드가 연결되기 전까지는 클라이언트에서만 처리합니다.
-    setStatus('문의가 접수되었습니다. 빠른 시일 내에 회신드리겠습니다. (데모: 실제 전송되지 않습니다)', 'ok');
-    form.reset();
+    if (!isConfigured) {
+      // 폼 ID가 없는데 "접수됐다"고 말하면 방문자를 속이는 셈이 된다.
+      return setStatus('문의 접수 기능을 준비 중입니다. 잠시 후 다시 시도해 주세요.', 'err');
+    }
+
+    setBusy(true);
+    setStatus('문의를 보내는 중입니다…', '');
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    })
+      .then(function (res) {
+        if (res.ok) {
+          form.reset();
+          setStatus('문의가 접수되었습니다. 빠른 시일 내에 회신드리겠습니다.', 'ok');
+          return;
+        }
+        // Formspree는 실패 사유를 errors 배열로 돌려준다.
+        return res.json().then(function (data) {
+          var reason = data && data.errors && data.errors.length
+            ? data.errors.map(function (x) { return x.message; }).join(' ')
+            : '';
+          setStatus('전송에 실패했습니다. ' + (reason || '잠시 후 다시 시도해 주세요.'), 'err');
+        });
+      })
+      .catch(function () {
+        setStatus('네트워크 오류로 전송하지 못했습니다. 연결을 확인한 뒤 다시 시도해 주세요.', 'err');
+      })
+      .then(function () { setBusy(false); });
   });
 
   /* ---------------------------------------------------------

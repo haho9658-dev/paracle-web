@@ -620,22 +620,39 @@
     <p class="cta-desc">
       복지관·재활병원 현장 실증(PoC), 보조기기 유통 협력, ESG·임팩트 투자에 관심 있는 분들의 연락을 기다립니다.
     </p>
-    <form class="contact-form" id="contactForm" novalidate>
+    <!-- Formspree 연동: action의 YOUR_FORM_ID 를 실제 폼 ID로 바꾸면 즉시 동작합니다.
+         (formspree.io 가입 → New Form → 엔드포인트 https://formspree.io/f/xxxxxxxx 의 xxxxxxxx 부분)
+         ID를 넣기 전까지는 전송되지 않고, 화면에 "준비 중"이라고 정직하게 안내합니다. -->
+    <form class="contact-form" id="contactForm"
+          action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
       <div class="form-row">
         <label class="field">
           <span>이름 / 기관명</span>
-          <input type="text" name="name" required placeholder="파라클 복지관">
+          <input type="text" name="name" required autocomplete="organization" placeholder="파라클 복지관">
         </label>
         <label class="field">
           <span>이메일</span>
-          <input type="email" name="email" required placeholder="hello@example.com">
+          <input type="email" name="email" required autocomplete="email" placeholder="hello@example.com">
         </label>
       </div>
       <label class="field">
         <span>문의 내용</span>
         <textarea name="message" rows="4" required placeholder="어떤 협업을 구상하고 계신가요?"></textarea>
       </label>
-      <button type="submit" class="btn btn-primary btn-block">문의 보내기</button>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" id="formConsent" required>
+        <span>
+          <strong>개인정보 수집·이용에 동의합니다.</strong>
+          문의 응답을 위해 이름·이메일·문의 내용을 수집하며, 답변 완료 후 1년간 보관한 뒤 파기합니다.
+          동의를 거부하실 수 있으나, 이 경우 문의 접수가 어렵습니다.
+        </span>
+      </label>
+
+      <!-- 스팸봇 유인용 숨김 필드. 사람에게는 보이지 않으므로 값이 차 있으면 봇으로 간주한다. -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="gotcha">
+
+      <button type="submit" class="btn btn-primary btn-block" id="formSubmit">문의 보내기</button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </div>
