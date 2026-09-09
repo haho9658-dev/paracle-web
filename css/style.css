@@ -333,34 +333,15 @@ table { border-collapse: collapse; width: 100%; }
 .mech-axis line { stroke: rgba(255, 255, 255, .28); stroke-width: 2; stroke-dasharray: 6 9; }
 .mech-axis path { stroke: rgba(255, 255, 255, .4); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-/* 틈 치수 표시 · 라벨 */
-.mech-gapdim { stroke: var(--teal-400); }
+/* 라벨 */
 .mech-gaplabel { fill: var(--teal-400); font-size: 12px; font-weight: 700; }
 
-/* 회전 가능 범위 표시(고스트 바퀴 + 화살표) — 잠금 해제 상태에서만 보인다 */
-.mech-yawhint { transition: opacity .35s var(--ease); }
+/* ===== 아이소메트릭 장면 =====
+   대각선 위에서 내려다본 시점. 승강장 → 틈 → 전동차 순으로 깊이가 쌓인다. */
+.iso-lockring { opacity: 0; transition: opacity .45s var(--ease); }
+.iso-assist { stroke-opacity: .45; transition: stroke-dasharray .4s var(--ease), stroke-opacity .4s var(--ease); }
 
-/* 휠체어 본체. 정면도라 좌우 흔들림(전복 위험)을 좌석 중앙 기준으로 준다. */
-.mech-chair { transform-origin: 200px 252px; }
-
-.mech-lockring {
-  fill: none; stroke: var(--teal-400); stroke-width: 3; stroke-dasharray: 5 5;
-  opacity: 0; transform: scale(1.7);
-  transform-box: fill-box; transform-origin: center;
-  transition: opacity .45s var(--ease), transform .45s var(--ease);
-}
-
-.mech-lever { transform-origin: 264px 150px; transition: transform .5s var(--ease); }
-.mech-lever line { stroke: var(--teal-400); stroke-width: 5; stroke-linecap: round; }
-.mech-lever circle { fill: var(--teal-400); }
-
-/* 보조 바퀴 — 평상시엔 들려 있다가(점선) 잠금 시 지면에 닿아 지지 축이 된다 */
-.mech-assistwheel {
-  opacity: .4;
-  transform: translateY(-9px);
-  transition: opacity .4s var(--ease), transform .4s var(--ease);
-}
-.mech-assistwheel ellipse { transition: stroke-dasharray .4s var(--ease); }
+.mech-lever { transition: transform .5s var(--ease); }
 
 .mech-status-free, .mech-status-lock {
   font-size: 13px; font-weight: 700; transition: opacity .35s var(--ease);
@@ -368,58 +349,74 @@ table { border-collapse: collapse; width: 100%; }
 .mech-status-free { fill: #F0A9A9; opacity: 1; }
 .mech-status-lock { fill: var(--teal-300); opacity: 0; }
 
-/* ===== 캐스터 요 회전을 3D처럼 =====
-   바퀴는 원판이다. 정면에서 보면 원판을 세로축으로 돌릴 때 폭만 줄었다 늘었다 한다.
-   (정사영 폭 = 지름 × |sin(요각)|)  그래서 scaleX 로 돌리면 실제 3D 회전처럼 보인다.
-   포크는 바퀴를 양쪽에서 감싸므로 반대 위상 — 바퀴가 옆을 볼수록 두 다리가 겹친다. */
-.mech-casterwheel { transform-box: fill-box; transform-origin: center; }
-.mech-fork2 { transform-box: fill-box; transform-origin: center; }
-/* 선 두께는 scaleX 의 영향을 받지 않아야 한다 (vector-effect 와 함께) */
-.mech-casterwheel circle { transition: none; }
+/* ===== 캐스터 요 회전 =====
+   바퀴는 원판이다. 원판을 세로축(요)으로 돌리면 그 정사영은 두 켤레 반지름
+   A = P(굴림 방향), B = P(z) 로 정의되는 타원이 된다. 즉 단위원에
+   matrix(Ax, Ay, Bx, By, Cx, Cy) 를 걸면 3D 회전이 그대로 재현된다.
+   아래 행렬값은 gen_iso.py 가 요각별로 계산한 것이다. */
+.iso-caster { transition: transform .55s var(--ease); }
 
-/* --- locked state --- */
-.mech-svg.is-locked .mech-lever { transform: rotate(52deg); }
-.mech-svg.is-locked .mech-lockring { opacity: 1; transform: scale(1); }
-.mech-svg.is-locked .mech-assistwheel { opacity: 1; transform: translateY(0); }
-.mech-svg.is-locked .mech-assistwheel ellipse { stroke-dasharray: none; }
-.mech-svg.is-locked .mech-yawhint { opacity: 0; }
+/* --- 잠금 상태 --- */
+.mech-svg.is-locked .mech-lever { transform: rotate(46deg); }
+.mech-svg.is-locked .iso-lockring { opacity: 1; }
+.mech-svg.is-locked .iso-assist { stroke-dasharray: none; stroke-opacity: 1; }
 .mech-svg.is-locked .mech-status-free { opacity: 0; }
 .mech-svg.is-locked .mech-status-lock { opacity: 1; }
 
-/* 잠금: 바퀴가 정면(직진)으로 고정되고 포크는 활짝 벌어진 채 멈춘다 */
-.mech-svg.is-locked .mech-casterwheel {
-  animation: none; transform: translateX(0) scaleX(.2);
-  transition: transform .5s var(--ease);
-}
-.mech-svg.is-locked .mech-fork2 {
-  animation: none; transform: scaleX(1);
-  transition: transform .5s var(--ease);
+/* 잠금: 요 축이 고정되어 두 앞바퀴가 직진 자세로 멈춘다 */
+.mech-svg.is-locked .iso-caster-a { animation: none; transform: matrix(8, -5.64, 0, -14.62, 0.62, -37.02); }
+.mech-svg.is-locked .iso-caster-b { animation: none; transform: matrix(8, -5.64, 0, -14.62, 47.38, -26.03); }
+
+/* 잠금: 흔들림 없이 틈을 건너 전동차 안으로 들어갔다가 되돌아온다.
+   이동량은 월드 +Y 로 112 만큼 간 것을 투영한 값 (96.99, -56). */
+.mech-svg.is-locked .mech-chair { animation: isoEnter 5s ease-in-out infinite alternate; }
+@keyframes isoEnter {
+  0%, 16%   { transform: translate(0, 0); }
+  84%, 100% { transform: translate(59px, -41.56px); }
 }
 
-/* 평상시: 두 캐스터가 제각각 좌우로 자유롭게 돈다 (좌우 위상차를 둬 자연스럽게) */
-.mech-svg:not(.is-locked) .mech-casterwheel-a { animation: casterYaw 3.4s ease-in-out infinite; }
-.mech-svg:not(.is-locked) .mech-casterwheel-b { animation: casterYaw 3.4s ease-in-out infinite -1.1s; }
-.mech-svg:not(.is-locked) .mech-fork2-a { animation: forkYaw 3.4s ease-in-out infinite; }
-.mech-svg:not(.is-locked) .mech-fork2-b { animation: forkYaw 3.4s ease-in-out infinite -1.1s; }
+/* 평상시: 두 앞바퀴가 제각각 돌아 틈 앞에서 방향을 못 잡고 덜컹거린다 */
+.mech-svg:not(.is-locked) .iso-caster-a { animation: isoCasterA 3.6s ease-in-out infinite; }
+.mech-svg:not(.is-locked) .iso-caster-b { animation: isoCasterB 3.6s ease-in-out infinite -1.3s; }
+.mech-svg:not(.is-locked) .mech-chair { animation: isoStuck 3.6s ease-in-out infinite; }
 
-@keyframes casterYaw {
-  0%, 100% { transform: translateX(-8px) scaleX(.88); }
-  25%      { transform: translateX(0)    scaleX(.2); }
-  50%      { transform: translateX(8px)  scaleX(.88); }
-  75%      { transform: translateX(0)    scaleX(.2); }
-}
-@keyframes forkYaw {
-  0%, 100% { transform: scaleX(.45); }
-  25%      { transform: scaleX(1); }
-  50%      { transform: scaleX(.45); }
-  75%      { transform: scaleX(1); }
+@keyframes isoStuck {
+  0%, 100% { transform: translate(0, 0); }
+  30%      { transform: translate(5px, -3.5px); }
+  45%      { transform: translate(6.5px, -4.6px); }
+  60%      { transform: translate(5px, -3.5px); }
 }
 
-/* 평상시: 바퀴가 제각각 틀어져 있으니 좌우로 흔들린다 (전복 위험) */
-.mech-svg:not(.is-locked) .mech-chair { animation: chairRock 3.4s ease-in-out infinite; }
-@keyframes chairRock {
-  0%, 100% { transform: rotate(1.1deg); }
-  50%      { transform: rotate(-1.1deg); }
+@keyframes isoCasterA {
+  0%       { transform: matrix(8, -5.64, 0, -14.62, 0.62, -37.02); }
+  8.333%   { transform: matrix(11.11, -4.68, 0, -14.62, 0.62, -37.02); }
+  16.67%   { transform: matrix(13.57, -3.45, 0, -14.62, 0.62, -37.02); }
+  25%      { transform: matrix(15.04, -2.23, 0, -14.62, 0.62, -37.02); }
+  33.33%   { transform: matrix(13.86, -3.25, 0, -14.62, 0.62, -37.02); }
+  41.67%   { transform: matrix(10.71, -4.84, 0, -14.62, 0.62, -37.02); }
+  50%      { transform: matrix(8, -5.64, 0, -14.62, 0.62, -37.02); }
+  58.33%   { transform: matrix(5.47, -6.12, 0, -14.62, 0.62, -37.02); }
+  66.67%   { transform: matrix(3.33, -6.37, 0, -14.62, 0.62, -37.02); }
+  75%      { transform: matrix(1.67, -6.47, 0, -14.62, 0.62, -37.02); }
+  83.33%   { transform: matrix(3.87, -6.31, 0, -14.62, 0.62, -37.02); }
+  91.67%   { transform: matrix(6.51, -5.95, 0, -14.62, 0.62, -37.02); }
+  100%     { transform: matrix(8, -5.64, 0, -14.62, 0.62, -37.02); }
+}
+
+@keyframes isoCasterB {
+  0%       { transform: matrix(8, -5.64, 0, -14.62, 47.38, -26.03); }
+  8.333%   { transform: matrix(11.11, -4.68, 0, -14.62, 47.38, -26.03); }
+  16.67%   { transform: matrix(13.57, -3.45, 0, -14.62, 47.38, -26.03); }
+  25%      { transform: matrix(15.04, -2.23, 0, -14.62, 47.38, -26.03); }
+  33.33%   { transform: matrix(13.86, -3.25, 0, -14.62, 47.38, -26.03); }
+  41.67%   { transform: matrix(10.71, -4.84, 0, -14.62, 47.38, -26.03); }
+  50%      { transform: matrix(8, -5.64, 0, -14.62, 47.38, -26.03); }
+  58.33%   { transform: matrix(5.47, -6.12, 0, -14.62, 47.38, -26.03); }
+  66.67%   { transform: matrix(3.33, -6.37, 0, -14.62, 47.38, -26.03); }
+  75%      { transform: matrix(1.67, -6.47, 0, -14.62, 47.38, -26.03); }
+  83.33%   { transform: matrix(3.87, -6.31, 0, -14.62, 47.38, -26.03); }
+  91.67%   { transform: matrix(6.51, -5.95, 0, -14.62, 47.38, -26.03); }
+  100%     { transform: matrix(8, -5.64, 0, -14.62, 47.38, -26.03); }
 }
 
 .mech-state {
