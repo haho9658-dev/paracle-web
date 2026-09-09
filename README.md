@@ -63,8 +63,15 @@ Paracle_web/
 │   ├── paracle-logo-white.png     로고 화이트 버전 (네이비 섹션·푸터용)
 │   ├── paracle-logo-full.png      원본 로고 (OG 이미지)
 │   └── favicon.png                파비콘
+├── tools/
+│   ├── render_mechanism.py        캐스터 락 도식 생성기 (설명은 tools/README.md)
+│   └── README.md
 └── .claude/launch.json            로컬 미리보기 서버 설정
 ```
+
+> 솔루션 섹션의 캐스터 락 도식은 3D 좌표를 투영해 **계산으로 생성한** SVG입니다.
+> 손으로 고치지 말고 `python tools/render_mechanism.py` 를 다시 실행하세요.
+> 시점을 바꾸려면 방위각·앙각만 넘기면 됩니다 (`python tools/render_mechanism.py 55 24`).
 
 ## 섹션 구성
 
