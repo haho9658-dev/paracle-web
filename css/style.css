@@ -411,9 +411,6 @@ table { border-collapse: collapse; width: 100%; }
 .growth-value-label { font-family: var(--font); font-weight: 700; font-size: 13px; }
 .growth-value-label.is-start { fill: var(--teal-500); }
 .growth-value-label.is-end { fill: var(--navy-800); }
-.growth-cagr-badge {
-  fill: var(--navy-800); font-family: var(--font); font-weight: 700; font-size: 12px;
-}
 
 /* =========================================================
    SOLUTION — mechanism demo

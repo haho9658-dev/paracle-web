@@ -253,10 +253,16 @@ def chair():
         e.append('<circle cx="%s" cy="%s" r="3" fill="#88CED6"/>' % (n(hx), n(hy)))
 
     lx, ly = P(40, 20, 92)                                      # 레버
+    ex, ey = n(lx + 20), n(ly - 16)
     e.append('<g class="mech-lever" id="mechLever" style="transform-origin:%spx %spx">'
              '<path d="M%s %s L%s %s" fill="none" stroke="#88CED6" stroke-width="4.5" '
              'stroke-linecap="round"/><circle cx="%s" cy="%s" r="5.5" fill="#88CED6"/></g>'
-             % (n(lx), n(ly), n(lx), n(ly), n(lx + 20), n(ly - 16), n(lx + 20), n(ly - 16)))
+             % (n(lx), n(ly), n(lx), n(ly), ex, ey, ex, ey))
+    # 레버 옆 라벨 — id="mechLeverLabel" 을 js/main.js 가 그대로 찾아 "레버 해제"/"레버 잠금"으로
+    # 갈아 끼운다. 이 id가 없으면 main.js 가 null.textContent 에서 예외를 던지고,
+    # 그 뒤에 나오는 코드(문의 폼 검증·제출 처리 등)가 통째로 실행되지 않는다.
+    e.append('<text x="%s" y="%s" id="mechLeverLabel" class="mech-label" '
+             'text-anchor="start">레버 해제</text>' % (n(lx + 30), n(ly - 12)))
     return "".join(e)
 
 

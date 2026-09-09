@@ -156,27 +156,7 @@
   }
 
   /* ---------------------------------------------------------
-     6. Problem meter bar
-     --------------------------------------------------------- */
-  var meters = document.querySelectorAll('.problem-meter');
-  if ('IntersectionObserver' in window) {
-    var meterObserver = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var bar = entry.target.querySelector('.problem-meter-bar span');
-        bar.style.width = entry.target.dataset.value + '%';
-        obs.unobserve(entry.target);
-      });
-    }, { threshold: 0.5 });
-    meters.forEach(function (m) { meterObserver.observe(m); });
-  } else {
-    meters.forEach(function (m) {
-      m.querySelector('.problem-meter-bar span').style.width = m.dataset.value + '%';
-    });
-  }
-
-  /* ---------------------------------------------------------
-     6b. 가로 스크롤이 필요한 비교표에 스크롤 힌트 표시
+     6. 가로 스크롤이 필요한 비교표에 스크롤 힌트 표시
      --------------------------------------------------------- */
   var tableScroll = document.querySelector('.table-scroll');
   var tableWrap = tableScroll && tableScroll.querySelector('.table-wrap');
