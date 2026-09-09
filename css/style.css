@@ -333,20 +333,25 @@ table { border-collapse: collapse; width: 100%; }
 .mech-axis line { stroke: rgba(255, 255, 255, .28); stroke-width: 2; stroke-dasharray: 6 9; }
 .mech-axis path { stroke: rgba(255, 255, 255, .4); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
+.mech-ground { stroke: rgba(255, 255, 255, .22); stroke-width: 2; }
 .mech-obstacle { fill: url(#hatch); stroke: rgba(136, 206, 214, .45); stroke-width: 2; }
 
-.mech-frame path { stroke: rgba(255, 255, 255, .42); stroke-width: 9; stroke-linecap: round; fill: none; }
+/* 충돌 표시 — 잠금 해제(평상시) 상태에서만 보인다 */
+.mech-impact { stroke: #F0A9A9; stroke-width: 3; fill: none; stroke-linecap: round; transition: opacity .3s var(--ease); }
 
-.mech-lever { transform-origin: 44px 150px; transition: transform .5s var(--ease); }
-.mech-lever line { stroke: var(--teal-400); stroke-width: 5; stroke-linecap: round; }
-.mech-lever circle { fill: var(--teal-400); }
+/* 휠체어 본체 — 평상시엔 문턱 앞에서 제자리 걸림, 잠금 시엔 문턱을 왕복하며 넘어간다 */
+.mech-chair { transform-origin: 222px 225px; }
 
-.mech-pivot { fill: var(--teal-400); }
-.mech-fork { stroke: #fff; stroke-width: 6; stroke-linecap: round; fill: none; }
-.mech-wheel { fill: rgba(255, 255, 255, .1); stroke: #fff; stroke-width: 5; }
-.mech-swivel { transition: transform .55s var(--ease); }
-.mech-swivel-a { transform-origin: 112px 100px; transform: rotate(-34deg); }
-.mech-swivel-b { transform-origin: 112px 200px; transform: rotate(27deg); }
+.mech-chair-frame path { stroke: rgba(255, 255, 255, .5); stroke-width: 6; stroke-linecap: round; fill: none; }
+.mech-chair-cap { fill: rgba(255, 255, 255, .5); }
+
+.mech-tire { fill: none; stroke: #fff; stroke-width: 4; }
+.mech-rim { fill: none; stroke: rgba(255, 255, 255, .4); stroke-width: 2; }
+.mech-rearwheel line { stroke: rgba(255, 255, 255, .32); stroke-width: 2; }
+.mech-hub { fill: var(--teal-400); }
+
+.mech-fork { stroke: #fff; stroke-width: 5; stroke-linecap: round; }
+.mech-frontwheel { fill: rgba(255, 255, 255, .08); stroke: #fff; stroke-width: 4; }
 
 .mech-lockring {
   fill: none; stroke: var(--teal-400); stroke-width: 3; stroke-dasharray: 5 5;
@@ -355,12 +360,16 @@ table { border-collapse: collapse; width: 100%; }
   transition: opacity .45s var(--ease), transform .45s var(--ease);
 }
 
-.mech-swing { stroke: #F0A9A9; stroke-width: 3; fill: none; stroke-linecap: round; transition: opacity .35s var(--ease); }
+.mech-lever { transform-origin: 222px 176px; transition: transform .5s var(--ease); }
+.mech-lever line { stroke: var(--teal-400); stroke-width: 5; stroke-linecap: round; }
+.mech-lever circle { fill: var(--teal-400); }
 
-.mech-assist rect { fill: rgba(136, 206, 214, .18); stroke: var(--teal-400); stroke-width: 4; stroke-dasharray: 5 6; transition: stroke-dasharray .45s var(--ease), fill .45s var(--ease); }
-
-.mech-arrow path { stroke: var(--teal-400); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.mech-arrow { opacity: 0; transform: translateX(-16px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+/* 보조 바퀴 — 평상시엔 들려 있다가(점선) 잠금 시 지면에 닿아 지지 축 역할을 한다 */
+.mech-assistwheel {
+  fill: none; stroke: var(--teal-400); stroke-width: 3.5; stroke-dasharray: 4 5; opacity: .4;
+  transform-box: fill-box; transform-origin: center; transform: translateY(-9px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease), stroke-dasharray .4s var(--ease);
+}
 
 .mech-status-free, .mech-status-lock {
   font-size: 13px; font-weight: 700; transition: opacity .35s var(--ease);
@@ -369,21 +378,30 @@ table { border-collapse: collapse; width: 100%; }
 .mech-status-lock { fill: var(--teal-300); opacity: 0; }
 
 /* --- locked state --- */
-.mech-svg.is-locked .mech-swivel-a,
-.mech-svg.is-locked .mech-swivel-b { transform: rotate(0deg); }
-.mech-svg.is-locked .mech-lever { transform: rotate(-42deg); }
+.mech-svg.is-locked .mech-lever { transform: rotate(48deg); }
 .mech-svg.is-locked .mech-lockring { opacity: 1; transform: scale(1); }
-.mech-svg.is-locked .mech-arrow { opacity: 1; transform: translateX(0); }
-.mech-svg.is-locked .mech-swing { opacity: 0; }
-.mech-svg.is-locked .mech-assist rect { stroke-dasharray: none; fill: rgba(136, 206, 214, .32); }
+.mech-svg.is-locked .mech-assistwheel { opacity: 1; stroke-dasharray: none; transform: translateY(0); }
+.mech-svg.is-locked .mech-impact { opacity: 0; }
 .mech-svg.is-locked .mech-status-free { opacity: 0; }
 .mech-svg.is-locked .mech-status-lock { opacity: 1; }
 
-/* idle swivel wobble (free state only) */
-.mech-svg:not(.is-locked) .mech-swivel-a { animation: wobbleA 3.2s var(--ease) infinite; }
-.mech-svg:not(.is-locked) .mech-swivel-b { animation: wobbleB 3.2s var(--ease) infinite; }
-@keyframes wobbleA { 0%, 100% { transform: rotate(-34deg); } 50% { transform: rotate(-8deg); } }
-@keyframes wobbleB { 0%, 100% { transform: rotate(27deg); } 50% { transform: rotate(4deg); } }
+/* 평상시: 문턱 앞에서 덜컹거리며 제자리 걸림 */
+.mech-svg:not(.is-locked) .mech-chair { animation: chairStuck 1.4s ease-in-out infinite; }
+@keyframes chairStuck {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(-3px, 0) rotate(-0.8deg); }
+  50%      { transform: translate(2px, -1px) rotate(0.5deg); }
+  75%      { transform: translate(-2px, 0) rotate(-0.4deg); }
+}
+
+/* 잠금 시: 문턱을 왕복하며 안전하게 넘어간다 (alternate로 되돌아올 때도 같은 동작을 재생) */
+.mech-svg.is-locked .mech-chair { animation: chairCross 4.6s cubic-bezier(.45, .05, .55, .95) infinite alternate; }
+@keyframes chairCross {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  45%  { transform: translate(46px, -14px) rotate(-4deg); }
+  60%  { transform: translate(72px, -9px) rotate(-1.5deg); }
+  100% { transform: translate(95px, 0) rotate(0deg); }
+}
 
 .mech-state {
   display: inline-flex; align-items: center; gap: 9px;
