@@ -1,0 +1,31 @@
+# ── 사업 문서 · 내부 자료 (공개 저장소에 절대 올라가면 안 됨) ──
+*.pdf
+*.hwp
+*.hwpx
+*.pptx
+*.docx
+*.xlsx
+사업계획서*
+*사업계획서*
+내부*
+private/
+
+# ── OS · 편집기 ──
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# ── 로컬 개발 ──
+node_modules/
+.env
+.env.*
+*.log
+
+# ── 임시 파일 ──
+_tmp*
+*.tmp
+~$*
