@@ -16,6 +16,27 @@ python -m http.server 5173
 
 이후 브라우저에서 `http://localhost:5173` 으로 접속합니다.
 
+## 배포 (GitHub Pages)
+
+`main` 브랜치에 push하면 자동 배포됩니다. 별도의 빌드 단계는 없습니다.
+
+```bash
+git add -A
+git commit -m "수정 내용"
+git push
+```
+
+1~2분 뒤 반영되며, 진행 상황은 저장소의 **Actions** 탭에서 확인할 수 있습니다.
+
+### 설정 기록
+
+- Pages 소스: **Deploy from a branch** → `main` / `/ (root)`
+- `.nojekyll` — Jekyll 처리를 건너뛰어 빌드를 단순화하고 `_`로 시작하는 파일도 그대로 서빙
+- `CNAME` — 연결된 커스텀 도메인. **이 파일을 지우면 도메인 연결이 끊깁니다.**
+  GitHub 설정 화면에서 도메인을 바꾸면 이 파일도 자동으로 갱신됩니다.
+- `.gitignore` — 사업계획서(PDF/HWP), 내부 문서가 공개 저장소에 올라가지 않도록 차단.
+  새 문서를 추가했을 때 `git status`에 뜨지 않는다면 의도대로 막힌 것입니다.
+
 ## 파일 구조
 
 ```
