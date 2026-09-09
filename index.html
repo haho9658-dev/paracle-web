@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- ?v= 는 캐시 무효화용. css/js를 고칠 때마다 숫자를 올려야 방문자가 옛 파일을 쓰지 않는다.
      (HTML만 갱신되고 CSS가 캐시에 남으면 스타일이 통째로 어긋난다) -->
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body>
 
@@ -128,7 +128,10 @@
     </header>
 
     <div class="problem-grid">
-      <article class="problem-card reveal" data-delay="0">
+      <!-- 01. 텍스트 설명과 근거 그래프를 한 카드 안에 둔다 (이전에는 카드와 그래프가
+           섹션 하단에 따로 떨어져 있었다). 17개 시·도 전체를 보여줘야 하므로 이 카드만
+           2열을 차지해 폭을 확보한다 — .problem-card-wide, CSS grid-column 참고. -->
+      <article class="problem-card problem-card-wide reveal" data-delay="0">
         <span class="problem-num">01</span>
         <h3>승하차 순간의 틈</h3>
         <p>
@@ -136,12 +139,114 @@
           (서울 71% vs 울산 18.7%). 지하철 승강장 틈, 엘리베이터 문턱, 보도블록 단차는
           여전히 곳곳에 남아 있습니다.
         </p>
-        <div class="problem-meter" data-value="44.4">
-          <div class="problem-meter-bar"><span></span></div>
-          <div class="problem-meter-label"><span>저상버스 보급률</span><b>44.4%</b></div>
+
+        <div class="problem-chart">
+          <p class="chart-sub">
+            <span class="chart-tag">2024년 기준</span>
+            전국 17개 시·도 중 서울이 가장 높고 울산이 가장 낮습니다 — 최대 3.8배 차이입니다.
+          </p>
+
+          <div class="bar-chart">
+          <ol class="bar-chart-list">
+            <li class="bar-row is-max" style="--v:71.0">
+              <span class="bar-row-label">서울</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">71.0%</span>
+            </li>
+            <li class="bar-row" style="--v:58.3">
+              <span class="bar-row-label">세종</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">58.3%</span>
+            </li>
+            <li class="bar-row" style="--v:48.4">
+              <span class="bar-row-label">대구</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">48.4%</span>
+            </li>
+            <li class="bar-row" style="--v:48.1">
+              <span class="bar-row-label">경남</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">48.1%</span>
+            </li>
+            <li class="bar-row" style="--v:47.1">
+              <span class="bar-row-label">충북</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">47.1%</span>
+            </li>
+            <li class="bar-row" style="--v:44.7">
+              <span class="bar-row-label">강원</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">44.7%</span>
+            </li>
+            <li class="bar-row" style="--v:44.0">
+              <span class="bar-row-label">부산</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">44.0%</span>
+            </li>
+            <li class="bar-row" style="--v:43.7">
+              <span class="bar-row-label">대전</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">43.7%</span>
+            </li>
+            <li class="bar-row" style="--v:41.8">
+              <span class="bar-row-label">광주</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">41.8%</span>
+            </li>
+            <li class="bar-row" style="--v:38.7">
+              <span class="bar-row-label">전북</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">38.7%</span>
+            </li>
+            <li class="bar-row" style="--v:36.0">
+              <span class="bar-row-label">경기</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">36.0%</span>
+            </li>
+            <li class="bar-row" style="--v:32.0">
+              <span class="bar-row-label">충남</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">32.0%</span>
+            </li>
+            <li class="bar-row" style="--v:30.1">
+              <span class="bar-row-label">전남</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">30.1%</span>
+            </li>
+            <li class="bar-row" style="--v:28.9">
+              <span class="bar-row-label">인천</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">28.9%</span>
+            </li>
+            <li class="bar-row" style="--v:28.6">
+              <span class="bar-row-label">경북</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">28.6%</span>
+            </li>
+            <li class="bar-row" style="--v:22.5">
+              <span class="bar-row-label">제주</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">22.5%</span>
+            </li>
+            <li class="bar-row is-min" style="--v:18.7">
+              <span class="bar-row-label">울산</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">18.7%</span>
+            </li>
+          </ol>
+          <div class="bar-chart-avgline" aria-hidden="true"><span>전국 평균 44.4%</span></div>
+          </div>
+
+          <div class="chart-legend" aria-hidden="true">
+            <span class="chart-legend-item"><span class="chart-legend-dot is-max"></span>최고 (서울)</span>
+            <span class="chart-legend-item"><span class="chart-legend-dot is-avg"></span>전국 평균 44.4%</span>
+            <span class="chart-legend-item"><span class="chart-legend-dot is-min"></span>최저 (울산)</span>
+          </div>
+          <p class="chart-foot">출처: 국토교통부, '2024년 교통약자 이동편의 실태조사' (2025)</p>
         </div>
       </article>
 
+      <!-- 02. 사고 통계도 같은 방식으로 카드 안에 직접 그래프를 그린다 (막대 2개 + 0/50/100% 눈금). -->
       <article class="problem-card reveal" data-delay="100">
         <span class="problem-num">02</span>
         <h3>캐스터 휠 구조의 한계</h3>
@@ -149,14 +254,30 @@
           수동 휠체어 앞바퀴는 좌우로 자유롭게 회전(요 축 회전)하도록 설계되어 평지 조향에는 유리하지만,
           턱이나 틈처럼 좁은 장애물을 지날 때는 <strong>옆으로 틀어지거나 끼어 넘어질 위험</strong>이 커집니다.
         </p>
-        <p class="problem-meter-note">한국소비자원 · 전동보장구 이용자 287명 조사</p>
-        <div class="problem-meter" data-value="35.5">
-          <div class="problem-meter-bar"><span></span></div>
-          <div class="problem-meter-label"><span>사고 경험 있음</span><b>35.5%</b></div>
-        </div>
-        <div class="problem-meter is-danger" data-value="41.2">
-          <div class="problem-meter-bar"><span></span></div>
-          <div class="problem-meter-label"><span>그중 '턱·장애물 걸림'</span><b>41.2%</b></div>
+
+        <div class="problem-chart problem-chart-compact">
+          <p class="chart-sub">
+            전동보장구 이용자 287명 조사 — 사고 경험 비율과, 사고 원인 중 '턱·장애물 걸림'이 차지하는 비중입니다.
+          </p>
+          <div class="bar-chart" style="--scale-max:100">
+            <ol class="bar-chart-list">
+              <li class="bar-row" style="--v:35.5">
+                <span class="bar-row-label">사고 경험</span>
+                <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+                <span class="bar-row-value">35.5%</span>
+              </li>
+              <li class="bar-row is-danger" style="--v:41.2">
+                <span class="bar-row-label">턱·장애물</span>
+                <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+                <span class="bar-row-value">41.2%</span>
+              </li>
+            </ol>
+          </div>
+          <div class="bar-chart-axis" aria-hidden="true">
+            <span></span>
+            <span class="bar-chart-axis-ticks"><i>0%</i><i>50%</i><i>100%</i></span>
+            <span></span>
+          </div>
         </div>
       </article>
 
@@ -171,115 +292,6 @@
           기존 휠체어의 장점은 그대로 두면서<br>저비용으로 <strong>안정성만 더하는 해법</strong>이 비어 있습니다.
         </p>
       </article>
-    </div>
-
-    <!-- 지역별 저상버스 보급률 : 국토교통부 2024년 조사 원자료를 그대로 옮긴 막대 리스트.
-         .chart-panel 이 .reveal 을 겸하므로 채움 애니메이션은 기존 IntersectionObserver로 동작한다. -->
-    <div class="chart-panel reveal">
-      <div class="chart-head">
-        <h3>지역별 저상버스 보급률</h3>
-        <span class="chart-tag">2024년 기준</span>
-        <p class="chart-sub">전국 17개 시·도 중 서울이 가장 높고 울산이 가장 낮습니다 — 최대 3.8배 차이입니다.</p>
-      </div>
-
-      <div class="bar-chart">
-      <ol class="bar-chart-list">
-        <li class="bar-row is-max" style="--v:71.0">
-          <span class="bar-row-label">서울</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">71.0%</span>
-        </li>
-        <li class="bar-row" style="--v:58.3">
-          <span class="bar-row-label">세종</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">58.3%</span>
-        </li>
-        <li class="bar-row" style="--v:48.4">
-          <span class="bar-row-label">대구</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">48.4%</span>
-        </li>
-        <li class="bar-row" style="--v:48.1">
-          <span class="bar-row-label">경남</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">48.1%</span>
-        </li>
-        <li class="bar-row" style="--v:47.1">
-          <span class="bar-row-label">충북</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">47.1%</span>
-        </li>
-        <li class="bar-row" style="--v:44.7">
-          <span class="bar-row-label">강원</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">44.7%</span>
-        </li>
-        <li class="bar-row" style="--v:44.0">
-          <span class="bar-row-label">부산</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">44.0%</span>
-        </li>
-        <li class="bar-row" style="--v:43.7">
-          <span class="bar-row-label">대전</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">43.7%</span>
-        </li>
-        <li class="bar-row" style="--v:41.8">
-          <span class="bar-row-label">광주</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">41.8%</span>
-        </li>
-        <li class="bar-row" style="--v:38.7">
-          <span class="bar-row-label">전북</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">38.7%</span>
-        </li>
-        <li class="bar-row" style="--v:36.0">
-          <span class="bar-row-label">경기</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">36.0%</span>
-        </li>
-        <li class="bar-row" style="--v:32.0">
-          <span class="bar-row-label">충남</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">32.0%</span>
-        </li>
-        <li class="bar-row" style="--v:30.1">
-          <span class="bar-row-label">전남</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">30.1%</span>
-        </li>
-        <li class="bar-row" style="--v:28.9">
-          <span class="bar-row-label">인천</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">28.9%</span>
-        </li>
-        <li class="bar-row" style="--v:28.6">
-          <span class="bar-row-label">경북</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">28.6%</span>
-        </li>
-        <li class="bar-row" style="--v:22.5">
-          <span class="bar-row-label">제주</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">22.5%</span>
-        </li>
-        <li class="bar-row is-min" style="--v:18.7">
-          <span class="bar-row-label">울산</span>
-          <span class="bar-row-track"><span class="bar-row-fill"></span></span>
-          <span class="bar-row-value">18.7%</span>
-        </li>
-
-      </ol>
-      <div class="bar-chart-avgline" aria-hidden="true"><span>전국 평균 44.4%</span></div>
-      </div>
-
-      <div class="chart-legend" aria-hidden="true">
-        <span class="chart-legend-item"><span class="chart-legend-dot is-max"></span>최고 (서울)</span>
-        <span class="chart-legend-item"><span class="chart-legend-dot is-avg"></span>전국 평균 44.4%</span>
-        <span class="chart-legend-item"><span class="chart-legend-dot is-min"></span>최저 (울산)</span>
-      </div>
-      <p class="chart-foot">출처: 국토교통부, '2024년 교통약자 이동편의 실태조사' (2025)</p>
     </div>
   </div>
 </section>
@@ -812,6 +824,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/main.js?v=9"></script>
+<script src="js/main.js?v=10"></script>
 </body>
 </html>
