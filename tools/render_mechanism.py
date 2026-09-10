@@ -239,7 +239,7 @@ def chair():
     FWD_Y = 26                          # 캐스터 진행 방향(+Y) 쪽으로 띄우는 거리
     SWIVEL_Z = 2                        # 바퀴 중심이 아니라 바닥에 거의 붙는 높이
     SWIVEL_COLOR = "#F0A9A9"            # 캐스터 색(#88CED6)과 구분되는 경고색 — FREE 상태 문구와 같은 색
-    SWIVEL_TILT = 15                    # 화살표 자체를 시계 방향으로 추가로 기울이는 각(도)
+    SWIVEL_TILT = 30                    # 화살표 자체를 시계 방향으로 추가로 기울이는 각(도)
     for s, tag in ((-1, "a"), (1, "b")):                        # 앞 캐스터
         lx, ly = P(s * CA_X, CA_Y + FWD_Y, SWIVEL_Z)            # 바퀴 앞(진행 방향), 바닥에 가까운 높이
         x0, y0 = lx - ARC_W, ly + ARC_DY
