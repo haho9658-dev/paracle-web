@@ -241,10 +241,26 @@ def chair():
                  'stroke-width="3.4" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>'
                  % mstr(wheel_matrix(s * AS_X, AS_Y, AS_R, AS_R, 0)))
 
+    ARC_W, ARC_H, ARC_DY = 15, 11, 4    # 회전 화살표 폭 · 굽은 높이 · 아래 처짐
     for s, tag in ((-1, "a"), (1, "b")):                        # 앞 캐스터
         lx, ly = P(s * CA_X, CA_Y, PIVOT_Z - 6)
-        e.append('<ellipse class="iso-lockring" cx="%s" cy="%s" rx="15" ry="6.5" fill="none" '
-                 'stroke="#88CED6" stroke-width="2.8" stroke-dasharray="4 4"/>' % (n(lx), n(ly)))
+        x0, y0 = lx - ARC_W, ly + ARC_DY
+        x1, y1 = lx + ARC_W, ly + ARC_DY
+        cx_, cy_ = lx, ly - ARC_H
+        ang0 = math.degrees(math.atan2(y0 - cy_, x0 - cx_))    # 왼쪽 화살촉 : 곡선의 접선 반대 방향
+        ang1 = math.degrees(math.atan2(y1 - cy_, x1 - cx_))    # 오른쪽 화살촉 : 곡선의 접선 방향
+        # 좌우로 오가는 요 회전을 표현하는 휘어진 양방향 화살표.
+        # 평상시(자유 회전)에는 보이고, 잠기면 사라진다 — .iso-swivel CSS 참고.
+        e.append('<g class="iso-swivel">'
+                 '<path d="M%s %s Q%s %s %s %s" fill="none" stroke="#88CED6" stroke-width="2.6" '
+                 'stroke-linecap="round"/>'
+                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="#88CED6" stroke-width="2.6" '
+                 'stroke-linecap="round" stroke-linejoin="round" transform="translate(%s %s) rotate(%s)"/>'
+                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="#88CED6" stroke-width="2.6" '
+                 'stroke-linecap="round" stroke-linejoin="round" transform="translate(%s %s) rotate(%s)"/>'
+                 '</g>'
+                 % (n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1),
+                    n(x0), n(y0), n1(ang0), n(x1), n(y1), n1(ang1)))
         e.append('<circle class="iso-caster iso-caster-%s" r="1" transform="%s" fill="#0A3159" '
                  'fill-opacity=".75" stroke="#ffffff" stroke-width="4.2" '
                  'vector-effect="non-scaling-stroke"/>'
