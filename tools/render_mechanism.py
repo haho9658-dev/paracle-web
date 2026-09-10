@@ -78,7 +78,6 @@ DOOR_GLASS = (6, 74, 128)   # 문 유리 : 문짝 테두리 여백, 아래, 위
 RW_R, RW_X, RW_Y = 42, 46, -10          # 뒷바퀴
 CA_R, CA_X, CA_Y = 16, 27, 48           # 앞 캐스터
 PIVOT_Z = 52
-AS_R, AS_X, AS_Y = 10, 27, 66           # 보조 바퀴
 SEAT_Z, BACK_Y, BACK_Z = 60, -36, 128
 
 CHAIR_Y = -66               # 시작 위치 (틈 앞)
@@ -236,14 +235,11 @@ def chair():
 
     e.append(rear(1, False))
 
-    for s in (-1, 1):                                           # 보조 바퀴
-        e.append('<circle class="iso-assist" r="1" transform="%s" fill="none" stroke="#88CED6" '
-                 'stroke-width="3.4" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>'
-                 % mstr(wheel_matrix(s * AS_X, AS_Y, AS_R, AS_R, 0)))
-
     ARC_W, ARC_H, ARC_DY = 15, 11, 4    # 회전 화살표 폭 · 굽은 높이 · 아래 처짐
+    FWD_Y = 26                          # 캐스터 진행 방향(+Y) 쪽으로 띄우는 거리
+    SWIVEL_COLOR = "#F0A9A9"            # 캐스터 색(#88CED6)과 구분되는 경고색 — FREE 상태 문구와 같은 색
     for s, tag in ((-1, "a"), (1, "b")):                        # 앞 캐스터
-        lx, ly = P(s * CA_X, CA_Y, PIVOT_Z - 6)
+        lx, ly = P(s * CA_X, CA_Y + FWD_Y, CA_R)                # 바퀴 위가 아니라 바퀴 앞(진행 방향)
         x0, y0 = lx - ARC_W, ly + ARC_DY
         x1, y1 = lx + ARC_W, ly + ARC_DY
         cx_, cy_ = lx, ly - ARC_H
@@ -252,15 +248,16 @@ def chair():
         # 좌우로 오가는 요 회전을 표현하는 휘어진 양방향 화살표.
         # 평상시(자유 회전)에는 보이고, 잠기면 사라진다 — .iso-swivel CSS 참고.
         e.append('<g class="iso-swivel">'
-                 '<path d="M%s %s Q%s %s %s %s" fill="none" stroke="#88CED6" stroke-width="2.6" '
+                 '<path d="M%s %s Q%s %s %s %s" fill="none" stroke="%s" stroke-width="2.6" '
                  'stroke-linecap="round"/>'
-                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="#88CED6" stroke-width="2.6" '
+                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="%s" stroke-width="2.6" '
                  'stroke-linecap="round" stroke-linejoin="round" transform="translate(%s %s) rotate(%s)"/>'
-                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="#88CED6" stroke-width="2.6" '
+                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="%s" stroke-width="2.6" '
                  'stroke-linecap="round" stroke-linejoin="round" transform="translate(%s %s) rotate(%s)"/>'
                  '</g>'
-                 % (n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1),
-                    n(x0), n(y0), n1(ang0), n(x1), n(y1), n1(ang1)))
+                 % (n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1), SWIVEL_COLOR,
+                    SWIVEL_COLOR, n(x0), n(y0), n1(ang0),
+                    SWIVEL_COLOR, n(x1), n(y1), n1(ang1)))
         e.append('<circle class="iso-caster iso-caster-%s" r="1" transform="%s" fill="#0A3159" '
                  'fill-opacity=".75" stroke="#ffffff" stroke-width="4.2" '
                  'vector-effect="non-scaling-stroke"/>'

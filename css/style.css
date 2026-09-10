@@ -439,7 +439,6 @@ table { border-collapse: collapse; width: 100%; }
 /* ===== 아이소메트릭 장면 =====
    대각선 위에서 내려다본 시점. 승강장 → 틈 → 전동차 순으로 깊이가 쌓인다. */
 .iso-swivel { opacity: 1; transition: opacity .45s var(--ease); }
-.iso-assist { stroke-opacity: .45; transition: stroke-dasharray .4s var(--ease), stroke-opacity .4s var(--ease); }
 
 .mech-lever { transition: transform .5s var(--ease); }
 
@@ -459,7 +458,6 @@ table { border-collapse: collapse; width: 100%; }
 /* --- 잠금 상태 --- */
 .mech-svg.is-locked .mech-lever { transform: rotate(46deg); }
 .mech-svg.is-locked .iso-swivel { opacity: 0; }
-.mech-svg.is-locked .iso-assist { stroke-dasharray: none; stroke-opacity: 1; }
 .mech-svg.is-locked .mech-status-free { opacity: 0; }
 .mech-svg.is-locked .mech-status-lock { opacity: 1; }
 
@@ -991,7 +989,6 @@ table { border-collapse: collapse; width: 100%; }
 .mech-svg .iso-caster { transition-duration: .55s !important; }
 .mech-svg .mech-lever { transition-duration: .5s !important; }
 .mech-svg .iso-swivel { transition-duration: .45s !important; }
-.mech-svg .iso-assist { transition-duration: .4s !important; }
 .mech-svg .mech-status-free,
 .mech-svg .mech-status-lock { transition-duration: .35s !important; }
 .mech-state { transition-duration: .3s !important; }
