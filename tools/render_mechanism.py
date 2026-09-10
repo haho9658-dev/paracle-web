@@ -238,6 +238,7 @@ def chair():
     ARC_W, ARC_H, ARC_DY = 15, 11, 4    # 회전 화살표 폭 · 굽은 높이 · 아래 처짐
     FWD_Y = 26                          # 캐스터 진행 방향(+Y) 쪽으로 띄우는 거리
     SWIVEL_COLOR = "#F0A9A9"            # 캐스터 색(#88CED6)과 구분되는 경고색 — FREE 상태 문구와 같은 색
+    SWIVEL_TILT = 15                    # 화살표 자체를 시계 방향으로 추가로 기울이는 각(도)
     for s, tag in ((-1, "a"), (1, "b")):                        # 앞 캐스터
         lx, ly = P(s * CA_X, CA_Y + FWD_Y, CA_R)                # 바퀴 위가 아니라 바퀴 앞(진행 방향)
         x0, y0 = lx - ARC_W, ly + ARC_DY
@@ -247,7 +248,8 @@ def chair():
         ang1 = math.degrees(math.atan2(y1 - cy_, x1 - cx_))    # 오른쪽 화살촉 : 곡선의 접선 방향
         # 좌우로 오가는 요 회전을 표현하는 휘어진 양방향 화살표.
         # 평상시(자유 회전)에는 보이고, 잠기면 사라진다 — .iso-swivel CSS 참고.
-        e.append('<g class="iso-swivel">'
+        # 전체를 자기 중심(lx, ly) 기준으로 SWIVEL_TILT도 만큼 시계 방향 회전.
+        e.append('<g class="iso-swivel" transform="rotate(%s %s %s)">'
                  '<path d="M%s %s Q%s %s %s %s" fill="none" stroke="%s" stroke-width="2.6" '
                  'stroke-linecap="round"/>'
                  '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="%s" stroke-width="2.6" '
@@ -255,7 +257,8 @@ def chair():
                  '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="%s" stroke-width="2.6" '
                  'stroke-linecap="round" stroke-linejoin="round" transform="translate(%s %s) rotate(%s)"/>'
                  '</g>'
-                 % (n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1), SWIVEL_COLOR,
+                 % (n1(SWIVEL_TILT), n(lx), n(ly),
+                    n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1), SWIVEL_COLOR,
                     SWIVEL_COLOR, n(x0), n(y0), n1(ang0),
                     SWIVEL_COLOR, n(x1), n(y1), n1(ang1)))
         e.append('<circle class="iso-caster iso-caster-%s" r="1" transform="%s" fill="#0A3159" '
