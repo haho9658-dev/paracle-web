@@ -271,11 +271,13 @@ def chair():
                     n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1), SWIVEL_COLOR,
                     SWIVEL_COLOR, n(x0), n(y0), n1(ang0),
                     SWIVEL_COLOR, n(x1), n(y1), n1(ang1)))
-        # 잠금 시 : 같은 자리에서 앞바퀴가 잠겨 있음을 자물쇠 모양으로
-        # 보여준다. 평상시엔 숨고 잠기면 나타난다 — iso-swivel과 정반대
-        # — .iso-fixed CSS 참고. "순간 잠금 메커니즘" 카드와 같은 도형.
-        ftx = lx - LOCK_CX * FIX_SCALE
-        fty = ly - LOCK_CY * FIX_SCALE
+        # 잠금 시 : 앞바퀴 정중앙에 자물쇠 모양을 겹쳐 이 바퀴가 잠겨
+        # 있음을 보여준다. 평상시엔 숨고 잠기면 나타난다 — iso-swivel과
+        # 정반대 — .iso-fixed CSS 참고. "순간 잠금 메커니즘" 카드와
+        # 같은 도형.
+        wx, wy = P(s * CA_X, CA_Y, CA_R)                        # 캐스터 바퀴 중심
+        ftx = wx - LOCK_CX * FIX_SCALE
+        fty = wy - LOCK_CY * FIX_SCALE
         e.append('<g class="iso-fixed" transform="translate(%s %s) scale(%s)">%s</g>'
                  % (n(ftx), n(fty), n(FIX_SCALE), LOCK_GLYPH % (FIX_COLOR, FIX_COLOR, FIX_COLOR)))
         e.append('<circle class="iso-caster iso-caster-%s" r="1" transform="%s" fill="#0A3159" '
