@@ -463,7 +463,7 @@ table { border-collapse: collapse; width: 100%; }
 .mech-svg.is-locked .mech-status-free { opacity: 0; }
 .mech-svg.is-locked .mech-status-lock { opacity: 1; }
 
-/* 잠금: 요 축이 고정되어 두 앞바퀴가 직진 자세로 멈춘다 */
+/* 잠금: 바퀴 방향이 고정되어 두 앞바퀴가 직진 자세로 멈춘다 */
 .mech-svg.is-locked .iso-caster-a { animation: none; transform: matrix(13.11, -3.73, 0, -14.62, 23.83, -34.81); }
 .mech-svg.is-locked .iso-caster-b { animation: none; transform: matrix(13.11, -3.73, 0, -14.62, 54.81, -16.82); }
 

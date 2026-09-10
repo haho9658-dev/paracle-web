@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- ?v= 는 캐시 무효화용. css/js를 고칠 때마다 숫자를 올려야 방문자가 옛 파일을 쓰지 않는다.
      (HTML만 갱신되고 CSS가 캐시에 남으면 스타일이 통째로 어긋난다) -->
-<link rel="stylesheet" href="css/style.css?v=19">
+<link rel="stylesheet" href="css/style.css?v=20">
 </head>
 <body>
 
@@ -251,7 +251,7 @@
         <span class="problem-num">02</span>
         <h3>캐스터 휠 구조의 한계</h3>
         <p>
-          수동 휠체어 앞바퀴는 좌우로 자유롭게 회전(요 축 회전)하도록 설계되어 평지 조향에는 유리하지만,
+          수동 휠체어 앞바퀴는 좌우로 자유롭게 방향을 바꾸도록 설계되어 평지 조향에는 유리하지만,
           턱이나 틈처럼 좁은 장애물을 지날 때는 <strong>옆으로 틀어지거나 끼어 넘어질 위험</strong>이 커집니다.
         </p>
 
@@ -306,8 +306,8 @@
       <p class="section-eyebrow">02. SOLUTION</p>
       <h2 class="section-title">캐스터 락 <span class="text-accent">보조 바퀴 모듈</span></h2>
       <p class="section-desc">
-        평상시에는 캐스터의 자유로운 요 축 회전을 그대로 유지해 좁은 실내에서의 조향성을 보존하고,
-        문턱·틈·승강장 간격을 지날 때만 레버 조작으로 회전 축을 고정해 보조 바퀴가 지지 축 역할을 하도록 만든
+        평상시에는 캐스터가 자유롭게 도는 상태를 그대로 유지해 좁은 실내에서의 조향성을 보존하고,
+        문턱·틈·승강장 간격을 지날 때만 레버 조작으로 바퀴 방향을 고정해 보조 바퀴가 지지 축 역할을 하도록 만든
         탈부착형 기계식 보조 장치입니다.
       </p>
     </header>
@@ -344,9 +344,9 @@
           <text x="301.7" y="222.3" class="mech-gaplabel" text-anchor="start" fill="#88CED6" font-weight="700" font-size="12">틈</text>
           <text x="353.1" y="201" class="mech-caption" text-anchor="middle" fill="#ffffff" fill-opacity=".5" font-size="12">전동차</text>
           <text x="220" y="308" class="mech-status-free" text-anchor="middle"
-                fill="#F0A9A9" font-size="13" font-weight="700">요 축 자유 회전 → 틈 앞에서 걸림·전복 위험</text>
+                fill="#F0A9A9" font-size="13" font-weight="700">바퀴 방향 제멋대로 → 틈 앞에서 걸림·전복 위험</text>
           <text x="220" y="308" class="mech-status-lock" text-anchor="middle"
-                fill="#A9DDE3" font-size="13" font-weight="700" opacity="0">요 축 고정 → 틈을 건너 전동차로 승차</text>
+                fill="#A9DDE3" font-size="13" font-weight="700" opacity="0">바퀴 방향 고정 → 틈을 건너 전동차로 승차</text>
         </svg>
 
         <div class="mech-state" id="mechState">
@@ -376,7 +376,7 @@
           <svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4" y="11" width="16" height="10" rx="2"/><circle cx="12" cy="16" r="1.6"/></svg>
         </div>
         <h3>순간 잠금(Lock) 메커니즘</h3>
-        <p>장애물 통과 구간에서만 캐스터의 요 축을 고정해, 바퀴가 옆으로 틀어지지 않고 직진 안정성을 확보합니다.</p>
+        <p>장애물 통과 구간에서만 캐스터 바퀴 방향을 고정해, 바퀴가 옆으로 틀어지지 않고 직진 안정성을 확보합니다.</p>
       </article>
 
       <article class="feature-card reveal" data-delay="100">
@@ -841,6 +841,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/main.js?v=19"></script>
+<script src="js/main.js?v=20"></script>
 </body>
 </html>
