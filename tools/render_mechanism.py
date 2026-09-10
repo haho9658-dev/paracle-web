@@ -240,6 +240,12 @@ def chair():
     SWIVEL_Z = 2                        # 바퀴 중심이 아니라 바닥에 거의 붙는 높이
     SWIVEL_COLOR = "#F0A9A9"            # 캐스터 색(#88CED6)과 구분되는 경고색 — FREE 상태 문구와 같은 색
     SWIVEL_TILT = 30                    # 화살표 자체를 시계 방향으로 추가로 기울이는 각(도)
+    FIX_LEN = 22                        # 잠금 시 직진 화살표 길이
+    FIX_COLOR = "#A9DDE3"               # LOCKED 상태 문구와 같은 색
+    fux, fuy = P(0, 1, 0)                                       # 진행 방향(+Y) 단위벡터(화면 기준)
+    flen = math.hypot(fux, fuy)
+    fux, fuy = fux / flen, fuy / flen
+    fix_ang = math.degrees(math.atan2(fuy, fux))
     for s, tag in ((-1, "a"), (1, "b")):                        # 앞 캐스터
         lx, ly = P(s * CA_X, CA_Y + FWD_Y, SWIVEL_Z)            # 바퀴 앞(진행 방향), 바닥에 가까운 높이
         x0, y0 = lx - ARC_W, ly + ARC_DY
@@ -262,6 +268,19 @@ def chair():
                     n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1), SWIVEL_COLOR,
                     SWIVEL_COLOR, n(x0), n(y0), n1(ang0),
                     SWIVEL_COLOR, n(x1), n(y1), n1(ang1)))
+        # 잠금 시 : 같은 자리에서 좌우로 돌지 않고 앞으로만 고정돼 있음을
+        # 보여주는 직선 화살표(진행 방향 그대로). 평상시엔 숨고 잠기면
+        # 나타난다 — iso-swivel과 정반대 — .iso-fixed CSS 참고.
+        bx, by = lx - fux * FIX_LEN * 0.5, ly - fuy * FIX_LEN * 0.5
+        fx, fy = lx + fux * FIX_LEN * 0.5, ly + fuy * FIX_LEN * 0.5
+        e.append('<g class="iso-fixed">'
+                 '<path d="M%s %s L%s %s" fill="none" stroke="%s" stroke-width="2.6" '
+                 'stroke-linecap="round"/>'
+                 '<path d="M-6 -5 L0 0 L-6 5" fill="none" stroke="%s" stroke-width="2.6" '
+                 'stroke-linecap="round" stroke-linejoin="round" transform="translate(%s %s) rotate(%s)"/>'
+                 '</g>'
+                 % (n(bx), n(by), n(fx), n(fy), FIX_COLOR,
+                    FIX_COLOR, n(fx), n(fy), n1(fix_ang)))
         e.append('<circle class="iso-caster iso-caster-%s" r="1" transform="%s" fill="#0A3159" '
                  'fill-opacity=".75" stroke="#ffffff" stroke-width="4.2" '
                  'vector-effect="non-scaling-stroke"/>'
