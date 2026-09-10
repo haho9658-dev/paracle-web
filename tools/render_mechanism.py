@@ -240,7 +240,7 @@ def chair():
     SWIVEL_Z = 2                        # 바퀴 중심이 아니라 바닥에 거의 붙는 높이
     SWIVEL_COLOR = "#F0A9A9"            # 캐스터 색(#88CED6)과 구분되는 경고색 — FREE 상태 문구와 같은 색
     SWIVEL_TILT = 30                    # 화살표 자체를 시계 방향으로 추가로 기울이는 각(도)
-    FIX_COLOR = "#A9DDE3"               # LOCKED 상태 문구와 같은 색
+    FIX_COLOR = "#C86A6A"               # 위험/강조에 쓰던 빨간색 (막대그래프 위험값 등과 동일)
     FIX_SCALE = 0.62                    # 자물쇠 아이콘 축소 비율 (원본은 24x24 아이콘 좌표계)
     # 사이트 다른 곳(순간 잠금 메커니즘 카드)과 같은 자물쇠 도형을 재사용한다.
     LOCK_GLYPH = ('<path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="%s" stroke-width="4.2" '
@@ -271,15 +271,6 @@ def chair():
                     n(x0), n(y0), n(cx_), n(cy_), n(x1), n(y1), SWIVEL_COLOR,
                     SWIVEL_COLOR, n(x0), n(y0), n1(ang0),
                     SWIVEL_COLOR, n(x1), n(y1), n1(ang1)))
-        # 잠금 시 : 앞바퀴 정중앙에 자물쇠 모양을 겹쳐 이 바퀴가 잠겨
-        # 있음을 보여준다. 평상시엔 숨고 잠기면 나타난다 — iso-swivel과
-        # 정반대 — .iso-fixed CSS 참고. "순간 잠금 메커니즘" 카드와
-        # 같은 도형.
-        wx, wy = P(s * CA_X, CA_Y, CA_R)                        # 캐스터 바퀴 중심
-        ftx = wx - LOCK_CX * FIX_SCALE
-        fty = wy - LOCK_CY * FIX_SCALE
-        e.append('<g class="iso-fixed" transform="translate(%s %s) scale(%s)">%s</g>'
-                 % (n(ftx), n(fty), n(FIX_SCALE), LOCK_GLYPH % (FIX_COLOR, FIX_COLOR, FIX_COLOR)))
         e.append('<circle class="iso-caster iso-caster-%s" r="1" transform="%s" fill="#0A3159" '
                  'fill-opacity=".75" stroke="#ffffff" stroke-width="4.2" '
                  'vector-effect="non-scaling-stroke"/>'
@@ -298,6 +289,18 @@ def chair():
     # 그 뒤에 나오는 코드(문의 폼 검증·제출 처리 등)가 통째로 실행되지 않는다.
     e.append('<text x="%s" y="%s" id="mechLeverLabel" class="mech-label" '
              'text-anchor="start">레버 해제</text>' % (n(lx + 30), n(ly - 12)))
+
+    # 잠금 시 앞바퀴 정중앙에 자물쇠를 겹쳐 이 바퀴가 잠겨 있음을
+    # 보여준다. 휠체어의 다른 모든 요소보다 나중에(=가장 위에) 그려야
+    # 바퀴판·프레임에 가리지 않는다 — 그래서 맨 마지막에 그린다.
+    # 평상시엔 숨고 잠기면 나타난다 — iso-swivel과 정반대,
+    # .iso-fixed CSS 참고. "순간 잠금 메커니즘" 카드와 같은 도형.
+    for s in (-1, 1):
+        wx, wy = P(s * CA_X, CA_Y, CA_R)                        # 캐스터 바퀴 중심
+        ftx = wx - LOCK_CX * FIX_SCALE
+        fty = wy - LOCK_CY * FIX_SCALE
+        e.append('<g class="iso-fixed" transform="translate(%s %s) scale(%s)">%s</g>'
+                 % (n(ftx), n(fty), n(FIX_SCALE), LOCK_GLYPH % (FIX_COLOR, FIX_COLOR, FIX_COLOR)))
     return "".join(e)
 
 
