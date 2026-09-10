@@ -975,6 +975,27 @@ table { border-collapse: collapse; width: 100%; }
   .reveal { opacity: 1; transform: none; }
 }
 
+/* 캐스터 락 데모는 장식이 아니라 작동 원리를 보여주는 설명 장치이므로
+   "동작 감소" 환경에서도 예외로 두고 항상 재생한다. 위 블록보다 선택자
+   구체성이 높아 순서와 무관하게 이 규칙이 이긴다. */
+.mech-svg:not(.is-locked) .iso-caster-a,
+.mech-svg:not(.is-locked) .iso-caster-b,
+.mech-svg:not(.is-locked) .mech-chair {
+  animation-duration: 3.6s !important;
+  animation-iteration-count: infinite !important;
+}
+.mech-svg.is-locked .mech-chair {
+  animation-duration: 5s !important;
+  animation-iteration-count: infinite !important;
+}
+.mech-svg .iso-caster { transition-duration: .55s !important; }
+.mech-svg .mech-lever { transition-duration: .5s !important; }
+.mech-svg .iso-lockring { transition-duration: .45s !important; }
+.mech-svg .iso-assist { transition-duration: .4s !important; }
+.mech-svg .mech-status-free,
+.mech-svg .mech-status-lock { transition-duration: .35s !important; }
+.mech-state { transition-duration: .3s !important; }
+
 /* print */
 @media print {
   .site-header, .to-top, .scroll-cue, .mech-btn, .contact-form { display: none !important; }
