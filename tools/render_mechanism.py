@@ -366,7 +366,7 @@ svg = "\n".join([
 ] + ['          ' + l for l in labels] + [
     '          <text x="220" y="308" class="mech-status-free" text-anchor="middle"',
     '                fill="#F0A9A9" font-size="13" font-weight="700">'
-    '바퀴 방향 제멋대로 → 틈 앞에서 걸림·전복 위험</text>',
+    '바퀴 방향 불안정 → 틈 앞에서 걸림·전복 위험</text>',
     '          <text x="220" y="308" class="mech-status-lock" text-anchor="middle"',
     '                fill="#A9DDE3" font-size="13" font-weight="700" opacity="0">'
     '바퀴 방향 고정 → 틈을 건너 전동차로 승차</text>',
