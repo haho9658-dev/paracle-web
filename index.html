@@ -4,41 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paracle Mobility — 일상의 틈을 넘다</title>
-<meta name="description" content="파라클 모빌리티는 수동 휠체어에 그대로 부착하는 무전력 기계식 캐스터 락 모듈을 만듭니다. 기존 휠체어 그대로, 레버 하나로 문턱과 틈을 안전하게 넘습니다.">
+<meta name="description" content="파라클 모빌리티는 수동 휠체어에 그대로 부착하는 기계식 캐스터 락 모듈로, 이동 약자가 마주하는 문턱·틈·승하차의 장벽을 해결하는 애프터마켓 모빌리티 솔루션입니다.">
 <meta name="author" content="Paracle Mobility">
 <meta property="og:title" content="Paracle Mobility — 일상의 틈을 넘다">
-<meta property="og:description" content="기존 휠체어 그대로, 레버 하나로 안전하게 단차 극복. 수동 휠체어에 부착하는 무전력 기계식 캐스터 락 모듈.">
-<meta property="og:image" content="https://www.paracle.kr/assets/deck/hero-caster.jpg">
+<meta property="og:description" content="수동 휠체어를 바꾸지 않고, 전력 없이. 문턱과 틈 앞에서만 캐스터 휠을 고정하는 기계식 안전장치.">
+<meta property="og:image" content="assets/paracle-logo-full.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- ?v= 는 캐시 무효화용. css/js를 고칠 때마다 숫자를 올려야 방문자가 옛 파일을 쓰지 않는다.
      (HTML만 갱신되고 CSS가 캐시에 남으면 스타일이 통째로 어긋난다) -->
-<link rel="stylesheet" href="css/style.css?v=27">
+<link rel="stylesheet" href="css/style.css?v=24">
 </head>
 <body>
 
 <a class="skip-link" href="#main">본문 바로가기</a>
 
-<!-- ============ HEADER ============
-     맨 위(검은 표지 위)에서는 투명 배경 + 흰 로고, 스크롤하면 흰 배경 + 남색 로고로 바뀐다.
-     로고 두 장을 모두 두고 CSS(.is-scrolled)로 하나만 보여준다. -->
+<!-- ============ HEADER ============ -->
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a class="brand" href="#hero" aria-label="Paracle Mobility 홈">
-      <img src="assets/paracle-logo-white.png" alt="Paracle Mobility" class="brand-logo brand-logo-light">
-      <img src="assets/paracle-logo.png" alt="" class="brand-logo brand-logo-dark">
+      <img src="assets/paracle-logo.png" alt="Paracle Mobility" class="brand-logo">
     </a>
 
     <nav class="nav" id="nav" aria-label="주요 메뉴">
       <ul class="nav-list">
-        <li><a href="#about" class="nav-link">브랜드</a></li>
-        <li><a href="#product" class="nav-link">제품</a></li>
-        <li><a href="#technology" class="nav-link">기술</a></li>
-        <li><a href="#scenes" class="nav-link">활용</a></li>
-        <li><a href="#vision" class="nav-link">비전</a></li>
-        <li><a href="#partners" class="nav-link">파트너십</a></li>
+        <li><a href="#problem" class="nav-link">문제 인식</a></li>
+        <li><a href="#solution" class="nav-link">솔루션</a></li>
+        <li><a href="#advantage" class="nav-link">경쟁력</a></li>
+        <li><a href="#market" class="nav-link">시장·BM</a></li>
+        <li><a href="#roadmap" class="nav-link">로드맵</a></li>
+        <li><a href="#about" class="nav-link">회사 소개</a></li>
       </ul>
       <a href="#contact" class="btn btn-primary btn-sm nav-cta">문의하기</a>
     </nav>
@@ -54,156 +51,268 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
-  <div class="hero-media" aria-hidden="true">
-    <img src="assets/deck/hero-caster.jpg" alt="" width="1456" height="816" fetchpriority="high">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="hero-wave hero-wave-1"></span>
+    <span class="hero-wave hero-wave-2"></span>
+    <span class="hero-blob"></span>
   </div>
 
   <div class="container hero-inner">
-    <p class="hero-eyebrow">PARACLE MOBILITY</p>
-    <h1 class="hero-title">일상의 틈을, <br>스스로 넘다</h1>
-    <p class="hero-band">기존 휠체어 그대로, <strong>레버 하나로 안전하게 단차 극복</strong></p>
-    <p class="hero-lead">
-      파라클 모빌리티는 수동 휠체어에 부착하는 무전력 기계식 캐스터 락 모듈을 만듭니다.
-      승강장의 틈, 버스 출입구, 건물 문턱 앞에서도 누구의 도움 없이 안전하게 지나갈 수 있도록.
-    </p>
-    <div class="hero-actions">
-      <a href="#product" class="btn btn-accent">제품 알아보기</a>
-      <a href="#contact" class="btn btn-ghost-light">도입·협업 문의</a>
+    <div class="hero-copy">
+      <p class="eyebrow">AFTERMARKET MOBILITY SOLUTION</p>
+      <h1 class="hero-title">
+        일상의 <span class="accent-underline">틈</span>을 넘다
+      </h1>
+      <p class="hero-lead">
+        휠체어를 바꾸지 않고, 전력 없이.<br>
+        문턱과 틈 앞에서만 캐스터 휠을 고정하는 <strong>기계식 안전장치</strong>로<br>
+        이동 약자의 <em>안전하고 이동성 있는 삶</em>을 만듭니다.
+      </p>
+      <div class="hero-actions">
+        <a href="#solution" class="btn btn-primary">솔루션 살펴보기</a>
+        <a href="#problem" class="btn btn-ghost">우리가 푸는 문제</a>
+      </div>
+
+      <dl class="hero-stats">
+        <div class="hero-stat">
+          <dt>전동보장구 이용자 사고 경험</dt>
+          <dd><span class="counter" data-target="35.5" data-decimals="1">0</span><span class="unit">%</span></dd>
+        </div>
+        <div class="hero-stat">
+          <dt>그중 '턱·장애물 걸림' 사고</dt>
+          <dd><span class="counter" data-target="41.2" data-decimals="1">0</span><span class="unit">%</span></dd>
+        </div>
+        <div class="hero-stat">
+          <dt>국내 등록 지체장애인</dt>
+          <dd><span class="counter" data-target="113">0</span><span class="unit">만 명</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-card">
+        <div class="hero-card-head">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="hero-card-title">CASTER LOCK MODULE</span>
+        </div>
+        <div class="hero-card-body">
+          <ul class="spec-list">
+            <li><span>동력원</span><strong>무전력 기계식</strong></li>
+            <li><span>장착 방식</span><strong>기존 휠체어 탈부착</strong></li>
+            <li><span>실내 회전성</span><strong>평상시 자유 회전 유지</strong></li>
+            <li><span>목표 가격대</span><strong>약 5만 원대</strong></li>
+          </ul>
+          <div class="hero-card-badge">Safety &amp; Mobility</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <a href="#about" class="scroll-cue" aria-label="아래로 스크롤">
+  <a href="#problem" class="scroll-cue" aria-label="아래로 스크롤">
     <span class="scroll-cue-line"></span>
     SCROLL
   </a>
 </section>
 
-<!-- ============ BRAND STORY ============ -->
-<section class="section section-white" id="about">
-  <div class="container">
-    <div class="story">
-      <div class="story-copy reveal">
-        <p class="eyebrow">BRAND STORY</p>
-        <h2 class="title">배리어프리 도시에서도, <br>그는 <span class="accent">혼자 내리지 못했습니다</span></h2>
-        <p class="lead">
-          파라클의 시작은 유럽 여행 중 목격한 한 장면이었습니다. 저상버스와 배리어프리 인프라가 잘 갖춰진
-          도시에서도, 정류장과 차량 사이 간격과 출입구의 작은 단차 때문에 휠체어 이용자가 혼자 오르내리지 못하고
-          주변의 도움을 받는 모습을 여러 번 마주했습니다.
-        </p>
-        <p class="lead">
-          인프라가 갖춰진 뒤에도 <strong>승하차 순간의 미세한 틈</strong>은 그대로 남아 있었습니다.
-          우리는 그 틈을 사람이 아니라 휠체어가 넘을 수 있게 만들기로 했습니다.
-        </p>
-      </div>
-      <figure class="story-figure reveal" data-delay="120">
-        <img src="assets/deck/gap-platform.jpg" alt="전동차 출입문과 승강장 사이에 벌어진 틈" width="1600" height="897" loading="lazy">
-      </figure>
-    </div>
-
-    <div class="mission reveal">
-      <p class="mission-label">OUR MISSION</p>
-      <p class="mission-text">
-        이동 약자가 매일 마주하는 <strong>승하차, 문턱, 틈</strong> — 반복되는 일상의 장벽을 해결해
-        독립적인 삶과 안전을 보장합니다.
-      </p>
-    </div>
-
-    <ul class="values">
-      <li class="value reveal" data-delay="0">
-        <span class="value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 9.5 4-1.2 7-5.1 7-9.5V6l-7-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
-        <h3>Safety</h3>
-        <p>넘어지지 않는다는 확신이 이동의 시작입니다.</p>
-      </li>
-      <li class="value reveal" data-delay="100">
-        <span class="value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 4 4-4 4"/></svg></span>
-        <h3>Mobility</h3>
-        <p>도움을 기다리지 않고 스스로 건널 수 있어야 합니다.</p>
-      </li>
-      <li class="value reveal" data-delay="200">
-        <span class="value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
-        <h3>Accessibility</h3>
-        <p>누구나 감당할 수 있는 가격이어야 진짜 해법입니다.</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ PRODUCT ============ -->
-<section class="section section-mist" id="product">
+<!-- ============ PROBLEM ============ -->
+<section class="section section-light" id="problem">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow">PRODUCT</p>
-      <h2 class="title">캐스터 락 보조 바퀴 모듈</h2>
-      <p class="lead">
-        평상시에는 지금처럼 자유롭게, 문턱과 틈 앞에서는 레버 하나로 단단하게.
-        지금 쓰는 수동 휠체어에 그대로 다는 기계식 안전장치입니다.
+      <p class="section-eyebrow">01. PROBLEM</p>
+      <h2 class="section-title">인프라가 갖춰져도<br>남아 있는 <span class="text-accent">순간의 틈</span></h2>
+      <p class="section-desc">
+        아이디어는 유럽 여행 중 목격한 장면에서 시작됐습니다. 저상버스와 배리어프리 인프라가 잘 갖춰진 도시에서도
+        정류장과 차량 사이의 간격, 출입구의 작은 단차 때문에 휠체어 이용자는 혼자 오르내리지 못했습니다.
+        인프라가 놓인 뒤에도 <strong>승하차 순간의 미세한 틈</strong>은 그대로 남아 있었습니다.
       </p>
     </header>
 
-    <div class="product">
-      <figure class="product-visual reveal">
-        <img src="assets/deck/caster-locked.webp" alt="레버로 앞바퀴를 잠근 채 턱을 넘는 수동 휠체어" width="900" height="693" loading="lazy">
-      </figure>
-      <dl class="spec reveal" data-delay="120">
-        <div><dt>동력</dt><dd>무전력 기계식 <small>배터리·모터 없음</small></dd></div>
-        <div><dt>장착</dt><dd>기존 수동 휠체어 캐스터에 탈부착</dd></div>
-        <div><dt>평상시</dt><dd>캐스터 자유 회전 유지 <small>실내 조향성 그대로</small></dd></div>
-        <div><dt>장애물 앞</dt><dd>레버로 바퀴 방향 고정 <small>보조 바퀴가 지지</small></dd></div>
-        <div><dt>목표 가격</dt><dd>약 5만 원대 <small>확정 전</small></dd></div>
-        <div><dt>출시</dt><dd>개발 중 <small>일정 확정 시 안내</small></dd></div>
-      </dl>
-    </div>
+    <div class="problem-grid">
+      <!-- 01. 텍스트 설명과 근거 그래프를 한 카드 안에 둔다 (이전에는 카드와 그래프가
+           섹션 하단에 따로 떨어져 있었다). 17개 시·도 전체를 보여줘야 하므로 이 카드만
+           2열을 차지해 폭을 확보한다 — .problem-card-wide, CSS grid-column 참고. -->
+      <article class="problem-card problem-card-wide reveal" data-delay="0">
+        <span class="problem-num">01</span>
+        <h3>승하차 순간의 틈</h3>
+        <p>
+          국토교통부 2024년 조사 기준 저상버스 보급률은 44.4%이나 지역 격차가 큽니다
+          (서울 71% vs 울산 18.7%). 지하철 승강장 틈, 엘리베이터 문턱, 보도블록 단차는
+          여전히 곳곳에 남아 있습니다. 교통수단 이용에 어려움을 겪는 지체장애인 중
+          <strong>67.7%는 그 이유로 '버스·택시의 물리적 접근과 탑승 시 어려움'을 꼽습니다</strong> —
+          전체 장애유형 평균(53.2%)보다 훨씬 높은 수치로, 캐스터 락이 정확히 겨냥하는 순간입니다.
+        </p>
+        <p class="chart-foot">출처: 한국보건사회연구원, '2023년 장애인 실태조사' (보건복지부 승인통계)</p>
 
-    <ul class="features">
-      <li class="feature reveal" data-delay="0">
-        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4" y="11" width="16" height="10" rx="2"/><circle cx="12" cy="16" r="1.6"/></svg></span>
-        <h3>레버 하나로 잠금·해제</h3>
-        <p>장애물 앞에서만 레버를 당겨 바퀴 방향을 고정하고, 지나가면 다시 풀어 평소처럼 씁니다.</p>
-      </li>
-      <li class="feature reveal" data-delay="80">
-        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v4M12 16v4M8 12l4 4 4-4"/></svg></span>
-        <h3>셀프 센터링</h3>
-        <p>V-캠과 복귀 스프링이 잠글 때 바퀴를 직진 위치로 이끌어, 비뚤게 잠기는 일을 줄입니다.</p>
-      </li>
-      <li class="feature reveal" data-delay="160">
-        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/><line x1="3" y1="3" x2="21" y2="21"/></svg></span>
-        <h3>무전력·저유지비</h3>
-        <p>충전도, 배터리 교체도 없습니다. 고장 날 전자 부품이 없어 유지비 부담이 적습니다.</p>
-      </li>
-      <li class="feature reveal" data-delay="240">
-        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h6V4"/><path d="M20 16h-6v4"/><rect x="3" y="8" width="7" height="12" rx="2"/><rect x="14" y="4" width="7" height="12" rx="2"/></svg></span>
-        <h3>탈부착 범용 설계</h3>
-        <p>휠체어를 새로 살 필요 없이, 익숙한 내 휠체어에 장착해 계속 사용합니다.</p>
-      </li>
-    </ul>
+        <div class="problem-chart">
+          <p class="chart-sub">
+            <span class="chart-tag">2024년 기준</span>
+            전국 17개 시·도 중 서울이 가장 높고 울산이 가장 낮습니다 — 최대 3.8배 차이입니다.
+          </p>
 
-    <div class="before-after">
-      <h3 class="subtitle reveal">같은 턱, 다른 결과</h3>
-      <div class="ba-grid">
-        <figure class="ba-card reveal">
-          <img src="assets/deck/caster-danger.webp" alt="턱 앞에서 앞바퀴가 좌우로 틀어지는 일반 휠체어" width="900" height="693" loading="lazy">
-          <figcaption><span class="ba-tag is-before">일반 캐스터</span>턱이나 틈을 만나면 앞바퀴가 옆으로 틀어져 걸리거나 넘어질 수 있습니다.</figcaption>
-        </figure>
-        <figure class="ba-card reveal" data-delay="100">
-          <img src="assets/deck/caster-mechanism.webp" alt="평지 주행 시 자유 회전, 장애물 통과 시 회전 고정되는 캐스터" width="900" height="866" loading="lazy">
-          <figcaption><span class="ba-tag">원리</span>평지에서는 자유 회전, 장애물을 넘을 때는 회전 고정.</figcaption>
-        </figure>
-        <figure class="ba-card reveal" data-delay="200">
-          <img src="assets/deck/caster-locked.webp" alt="캐스터 락으로 앞바퀴를 고정해 턱을 넘는 휠체어" width="900" height="693" loading="lazy">
-          <figcaption><span class="ba-tag is-after">캐스터 락</span>바퀴 방향이 고정되고 보조 바퀴가 받쳐 주어 직진 자세 그대로 넘어갑니다.</figcaption>
-        </figure>
-      </div>
+          <div class="bar-chart">
+          <ol class="bar-chart-list">
+            <li class="bar-row is-max" style="--v:71.0">
+              <span class="bar-row-label">서울</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">71.0%</span>
+            </li>
+            <li class="bar-row" style="--v:58.3">
+              <span class="bar-row-label">세종</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">58.3%</span>
+            </li>
+            <li class="bar-row" style="--v:48.4">
+              <span class="bar-row-label">대구</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">48.4%</span>
+            </li>
+            <li class="bar-row" style="--v:48.1">
+              <span class="bar-row-label">경남</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">48.1%</span>
+            </li>
+            <li class="bar-row" style="--v:47.1">
+              <span class="bar-row-label">충북</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">47.1%</span>
+            </li>
+            <li class="bar-row" style="--v:44.7">
+              <span class="bar-row-label">강원</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">44.7%</span>
+            </li>
+            <li class="bar-row" style="--v:44.0">
+              <span class="bar-row-label">부산</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">44.0%</span>
+            </li>
+            <li class="bar-row" style="--v:43.7">
+              <span class="bar-row-label">대전</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">43.7%</span>
+            </li>
+            <li class="bar-row" style="--v:41.8">
+              <span class="bar-row-label">광주</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">41.8%</span>
+            </li>
+            <li class="bar-row" style="--v:38.7">
+              <span class="bar-row-label">전북</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">38.7%</span>
+            </li>
+            <li class="bar-row" style="--v:36.0">
+              <span class="bar-row-label">경기</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">36.0%</span>
+            </li>
+            <li class="bar-row" style="--v:32.0">
+              <span class="bar-row-label">충남</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">32.0%</span>
+            </li>
+            <li class="bar-row" style="--v:30.1">
+              <span class="bar-row-label">전남</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">30.1%</span>
+            </li>
+            <li class="bar-row" style="--v:28.9">
+              <span class="bar-row-label">인천</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">28.9%</span>
+            </li>
+            <li class="bar-row" style="--v:28.6">
+              <span class="bar-row-label">경북</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">28.6%</span>
+            </li>
+            <li class="bar-row" style="--v:22.5">
+              <span class="bar-row-label">제주</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">22.5%</span>
+            </li>
+            <li class="bar-row is-min" style="--v:18.7">
+              <span class="bar-row-label">울산</span>
+              <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+              <span class="bar-row-value">18.7%</span>
+            </li>
+          </ol>
+          <div class="bar-chart-avgline" aria-hidden="true"><span>전국 평균 44.4%</span></div>
+          </div>
+
+          <div class="chart-legend" aria-hidden="true">
+            <span class="chart-legend-item"><span class="chart-legend-dot is-max"></span>최고 (서울)</span>
+            <span class="chart-legend-item"><span class="chart-legend-dot is-avg"></span>전국 평균 44.4%</span>
+            <span class="chart-legend-item"><span class="chart-legend-dot is-min"></span>최저 (울산)</span>
+          </div>
+          <p class="chart-foot">출처: 국토교통부, '2024년 교통약자 이동편의 실태조사' (2025)</p>
+        </div>
+      </article>
+
+      <!-- 02. 사고 통계도 같은 방식으로 카드 안에 직접 그래프를 그린다 (막대 2개 + 0/50/100% 눈금). -->
+      <article class="problem-card reveal" data-delay="100">
+        <span class="problem-num">02</span>
+        <h3>캐스터 휠 구조의 한계</h3>
+        <p>
+          수동 휠체어 앞바퀴는 좌우로 자유롭게 방향을 바꾸도록 설계되어 평지 조향에는 유리하지만,
+          턱이나 틈처럼 좁은 장애물을 지날 때는 <strong>옆으로 틀어지거나 끼어 넘어질 위험</strong>이 커집니다.
+        </p>
+
+        <div class="problem-chart problem-chart-compact">
+          <p class="chart-sub">
+            <span class="chart-tag">2016년 조사</span>
+            전동보장구 3년 이상 이용자 287명 대상 — 사고 경험 비율과, 사고 원인 중 '턱·장애물 걸림'이
+            차지하는 비중입니다. 캐스터 휠 구조의 근본적 한계는 지금도 동일합니다.
+          </p>
+          <div class="bar-chart" style="--scale-max:100">
+            <ol class="bar-chart-list">
+              <li class="bar-row" style="--v:35.5">
+                <span class="bar-row-label">사고 경험</span>
+                <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+                <span class="bar-row-value">35.5%</span>
+              </li>
+              <li class="bar-row is-danger" style="--v:41.2">
+                <span class="bar-row-label">턱·장애물</span>
+                <span class="bar-row-track"><span class="bar-row-fill"></span></span>
+                <span class="bar-row-value">41.2%</span>
+              </li>
+            </ol>
+          </div>
+          <div class="bar-chart-axis" aria-hidden="true">
+            <span></span>
+            <span class="bar-chart-axis-ticks"><i>0%</i><i>50%</i><i>100%</i></span>
+            <span></span>
+          </div>
+          <p class="chart-foot">출처: 한국소비자원, 전동보장구 이용자 안전실태조사 (2016)</p>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-delay="200">
+        <span class="problem-num">03</span>
+        <h3>비어 있는 '중간 단계'</h3>
+        <p>
+          캐스터 휠을 통째로 들어올리는 부착형 액세서리는 회전 반경이 커져 실내에서 불편하고,
+          계단까지 오르는 로봇형 휠체어는 수천만 원대에 무게·충전 부담까지 있습니다.
+        </p>
+        <p class="problem-punch">
+          기존 휠체어의 장점은 그대로 두면서<br>저비용으로 <strong>안정성만 더하는 해법</strong>이 비어 있습니다.
+        </p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ TECHNOLOGY ============ -->
-<section class="section section-white" id="technology">
+<!-- ============ SOLUTION ============ -->
+<section class="section section-navy" id="solution">
   <div class="container">
     <header class="section-head section-head-center reveal">
-      <p class="eyebrow">TECHNOLOGY</p>
-      <h2 class="title">레버 하나로 바뀌는 두 가지 상태</h2>
-      <p class="lead">아래 버튼으로 직접 잠가 보세요. 지하철 승강장의 틈 앞에서 휠체어가 어떻게 달라지는지 보여 드립니다.</p>
+      <p class="section-eyebrow">02. SOLUTION</p>
+      <h2 class="section-title">캐스터 락 <span class="text-accent">보조 바퀴 모듈</span></h2>
+      <p class="section-desc">
+        평상시에는 캐스터가 자유롭게 도는 상태를 그대로 유지해 좁은 실내에서의 조향성을 보존하고,
+        문턱·틈·승강장 간격을 지날 때만 레버 조작으로 바퀴 방향을 고정해 보조 바퀴가 지지 축 역할을 하도록 만든
+        탈부착형 기계식 보조 장치입니다.
+      </p>
     </header>
 
     <!-- Interactive mechanism demo -->
@@ -250,7 +359,7 @@
       </div>
 
       <div class="mech-panel">
-        <h3 class="mech-title">자유 회전 ↔ 방향 고정</h3>
+        <h3 class="mech-title">레버 하나로 바뀌는 두 가지 상태</h3>
         <p class="mech-text" id="mechText">
           평상시에는 캐스터가 자유롭게 회전해 좁은 실내에서도 기존과 똑같이 방향을 바꿀 수 있습니다.
           다만 문턱이나 틈을 만나면 바퀴가 옆으로 틀어져 끼거나 전복될 위험이 커집니다.
@@ -263,277 +372,407 @@
       </div>
     </div>
 
-    <div class="tech">
-      <figure class="tech-figure reveal">
-        <img src="assets/deck/mech-infographic.webp"
-             alt="평상시 자유 조향, 무전력 기계식 셀프 센터링 모듈의 내부 구조(센터링 캠·복귀 스프링·잠금 슬리브·기계식 레버), 장애물 통과 시 자동 정렬"
-             width="1600" height="900" loading="lazy">
-      </figure>
-      <div class="tech-copy reveal" data-delay="120">
-        <h3 class="subtitle">무전력 기계식 셀프 센터링 설계</h3>
-        <p class="lead">
-          모듈 안의 센터링 캠과 복귀 스프링이 캐스터를 필요할 때만 중심 위치로 유도합니다.
-          전기 장치 없이 주행 에너지와 레버만으로 작동해, 실내 조향성과 장애물 통과 안정성을 함께 확보합니다.
-        </p>
-        <ul class="checks">
-          <li>직진 정렬을 돕는 V-캠 기반 셀프 센터링 구조</li>
-          <li>배터리·모터 없는 무전력 기계식 구동</li>
-          <li>기존 캐스터 모듈에 적용 가능한 탈부착 구조</li>
-        </ul>
-        <p class="patent">
-          <span>특허</span>
-          해외 학술·특허 선행조사로 기존 특허와 겹치지 않음을 1차 확인했으며, 지하철 승하차 간격·저상버스
-          승하차구·실내 문턱 등 국내 이동 환경에 맞춘 특허 출원을 준비하고 있습니다.
+    <!-- core features -->
+    <div class="feature-grid">
+      <article class="feature-card reveal" data-delay="0">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4" y="11" width="16" height="10" rx="2"/><circle cx="12" cy="16" r="1.6"/></svg>
+        </div>
+        <h3>순간 잠금(Lock) 메커니즘</h3>
+        <p>장애물 통과 구간에서만 캐스터 바퀴 방향을 고정해, 바퀴가 옆으로 틀어지지 않고 직진 안정성을 확보합니다.</p>
+      </article>
+
+      <article class="feature-card reveal" data-delay="100">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 8h6V4"/><path d="M20 16h-6v4"/><rect x="3" y="8" width="7" height="12" rx="2"/><rect x="14" y="4" width="7" height="12" rx="2"/></svg>
+        </div>
+        <h3>탈부착형 범용 구조</h3>
+        <p>기존 수동 휠체어를 교체하지 않고 그대로 장착할 수 있는 범용 설계로, 이용자가 익숙한 휠체어를 계속 사용합니다.</p>
+      </article>
+
+      <article class="feature-card reveal" data-delay="200">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+        </div>
+        <h3>무전력 기계식 구동</h3>
+        <p>배터리와 전력 없이 작동해 고장 요소와 유지비를 최소화합니다. 충전 부담도, 방전 걱정도 없습니다.</p>
+      </article>
+    </div>
+
+    <div class="solution-note reveal">
+      <div class="solution-note-mark" aria-hidden="true">IP</div>
+      <div>
+        <h4>방어적 특허 전략</h4>
+        <p>
+          해외 학술·특허(<em>Assistive Caster Unit for Step Climbing</em> 등) 선행조사를 통해 본 잠금 구조가
+          기존 특허와 중첩되지 않음을 1차 확인했습니다. 이를 바탕으로 지하철 승하차 간격, 저상버스 승하차구,
+          좁은 실내 문턱 등 <strong>국내 이동 환경에 최적화한 청구항</strong>을 구성해 모방이 어려운 특허를 출원할 계획입니다.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ USE CASES ============ -->
-<section class="section section-mist" id="scenes">
+<!-- ============ ADVANTAGE ============ -->
+<section class="section section-light" id="advantage">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow">USE CASES</p>
-      <h2 class="title">이런 순간을 위해 만들었습니다</h2>
-      <p class="lead">휠체어 이용자가 가장 자주 멈춰 서는 곳은 거창한 계단이 아니라, 몇 센티미터의 틈과 턱입니다.</p>
+      <p class="section-eyebrow">03. COMPETITIVE EDGE</p>
+      <h2 class="section-title">기존 휠체어를 바꾸지 않고,<br>전력 없이, <span class="text-accent">가장 낮은 비용</span>으로</h2>
+      <p class="section-desc">
+        실용성과 안정성을 동시에 더할 수 있는 유일한 애프터마켓 대안입니다.
+        보조기기가 필요해도 구입하지 않는 가장 큰 이유가 <strong>'경제적 비용 부담'(44.2%)</strong>인 만큼,
+        가장 낮은 비용 자체가 곧 접근성입니다.
+      </p>
+      <p class="chart-foot">출처: 한국보건사회연구원, '2023년 장애인 실태조사' (보건복지부 승인통계)</p>
     </header>
 
-    <ul class="scenes">
-      <li class="scene scene-wide reveal">
-        <img src="assets/deck/gap-platform.jpg" alt="" width="1600" height="897" loading="lazy">
-        <div class="scene-body">
-          <h3>지하철 승하차</h3>
-          <p>전동차와 승강장 사이의 틈에서 앞바퀴가 빠지거나 옆으로 꺾이지 않도록.</p>
-        </div>
-      </li>
-      <li class="scene reveal" data-delay="80">
-        <span class="scene-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14.5" r=".8"/><circle cx="16" cy="14.5" r=".8"/></svg></span>
-        <h3>저상버스 승하차</h3>
-        <p>정류장과 차량 사이 간격, 경사판 끝의 작은 단차를 직진 자세로.</p>
-      </li>
-      <li class="scene reveal" data-delay="160">
-        <span class="scene-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M12 3v18M9 9l-1.5 1.5L9 12M15 9l1.5 1.5L15 12"/></svg></span>
-        <h3>엘리베이터·건물 출입구</h3>
-        <p>엘리베이터 문틈과 출입구 문턱에서 멈칫하지 않고.</p>
-      </li>
-      <li class="scene reveal" data-delay="240">
-        <span class="scene-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18h7v-4h11"/><path d="M3 21h18"/><path d="M14 11l2-2 2 2"/></svg></span>
-        <h3>보도·횡단보도 턱</h3>
-        <p>낮은 턱과 파인 노면에서 바퀴가 옆으로 꺾이지 않게.</p>
-      </li>
-    </ul>
-  </div>
-</section>
+    <div class="table-scroll reveal">
+      <p class="table-hint" aria-hidden="true">좌우로 밀어서 전체 보기</p>
+      <div class="table-wrap" tabindex="0" role="group" aria-label="경쟁 제품 비교표 (좌우 스크롤 가능)">
+      <table class="compare-table">
+        <caption class="sr-only">경쟁 제품 비교우위표</caption>
+        <thead>
+          <tr>
+            <th scope="col">구분</th>
+            <th scope="col" class="is-ours">
+              <span class="th-brand">Paracle</span>
+              캐스터 락 모듈
+            </th>
+            <th scope="col">FreeWheel <small>미국</small></th>
+            <th scope="col">WHILL <small>일본</small></th>
+            <th scope="col">Scewo <small>스위스</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">동력원</th>
+            <td class="is-ours"><span class="chip chip-good">무전력 (기계식)</span></td>
+            <td>무전력 (기계식)</td>
+            <td>전동 / 배터리</td>
+            <td>전동 / 배터리</td>
+          </tr>
+          <tr>
+            <th scope="row">기존 휠체어 호환</th>
+            <td class="is-ours"><span class="chip chip-good">그대로 부착 가능</span></td>
+            <td>그대로 부착 가능</td>
+            <td>휠체어 자체 교체 필요</td>
+            <td>휠체어 자체 교체 필요</td>
+          </tr>
+          <tr>
+            <th scope="row">실내 좁은 공간 회전성</th>
+            <td class="is-ours"><span class="chip chip-good">평상시 자유 회전 유지</span></td>
+            <td>회전 반경 커짐 (제약)</td>
+            <td>비교적 양호</td>
+            <td>회전 반경 큼 (162kg, 정지 시 115cm)</td>
+          </tr>
+          <tr>
+            <th scope="row">참고 가격대</th>
+            <td class="is-ours"><span class="chip chip-good">약 5만 원대</span></td>
+            <td>약 80~120만 원대</td>
+            <td>약 500~700만 원대</td>
+            <td>약 5,000만 원대</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
 
-<!-- ============ IMPACT ============ -->
-<section class="section section-navy" id="impact">
-  <div class="container">
-    <header class="section-head reveal">
-      <p class="eyebrow">WHY IT MATTERS</p>
-      <h2 class="title">작은 틈이 큰 장벽이 됩니다</h2>
-    </header>
-    <dl class="impact">
-      <div class="impact-item reveal" data-delay="0">
-        <dt>국내 등록 지체장애인</dt>
-        <dd><span class="counter" data-target="113">0</span><span class="unit">만 명</span></dd>
-        <p>전체 등록장애인의 43.0%, 이 중 60세 이상이 73.4%입니다.</p>
-      </div>
-      <div class="impact-item reveal" data-delay="80">
-        <dt>전동보장구 사고 유형 1위</dt>
-        <dd><span class="counter" data-target="41.2" data-decimals="1">0</span><span class="unit">%</span></dd>
-        <p>사고를 겪은 이용자가 꼽은 1위 유형은 '턱·장애물에 의한 걸림'이었습니다.</p>
-      </div>
-      <div class="impact-item reveal" data-delay="160">
-        <dt>버스·택시 탑승의 물리적 어려움</dt>
-        <dd><span class="counter" data-target="67.7" data-decimals="1">0</span><span class="unit">%</span></dd>
-        <p>교통수단 이용이 어려운 지체장애인 중 '버스·택시 탑승 시 물리적 어려움'을 꼽은 비율입니다.</p>
-      </div>
-      <div class="impact-item reveal" data-delay="240">
-        <dt>전국 저상버스 보급률</dt>
-        <dd><span class="counter" data-target="44.4" data-decimals="1">0</span><span class="unit">%</span></dd>
-        <p>인프라는 나아지고 있지만 지역 격차가 크고(서울 71%, 울산 18.7%), 승하차의 틈은 여전합니다.</p>
-      </div>
-    </dl>
-    <p class="source">
-      출처: 보건복지부 등록장애인 현황(2024) · 한국소비자원 전동보장구 이용 실태조사(2016, 사고 경험자 102명 중복응답) ·
-      한국보건사회연구원 2023년 장애인 실태조사 · 국토교통부 2024년 교통약자 이동편의 실태조사(2025)
+    <p class="compare-foot reveal">
+      ※ 참고 가격대는 각사 공식 판매 페이지의 공개 가격(FreeWheel $599~899, WHILL 기본형 $4,999~,
+      Scewo BRO 32,850 CHF~)을 2026년 9월 환율(약 1,336원/달러)로 환산한 추정치이며, 환율·구성에 따라
+      달라질 수 있습니다. 당사 목표 소비자가는 부품 원가·제조 방식 검토를 거쳐 확정될 예정입니다.
     </p>
   </div>
 </section>
 
-<!-- ============ WHY PARACLE ============ -->
-<section class="section section-white" id="compare">
+<!-- ============ MARKET & BM ============ -->
+<section class="section section-tint" id="market">
   <div class="container">
-    <div class="compare">
-      <header class="compare-head reveal">
-        <p class="eyebrow">WHY PARACLE</p>
-        <h2 class="title">휠체어를 <br>바꾸지 않아도 됩니다</h2>
-        <p class="lead">
-          보조기기가 필요한데도 구입하지 않는 가장 큰 이유는 <strong>'경제적 비용 부담'(44.2%)</strong>입니다.
-          파라클은 새 휠체어가 아니라, 지금의 휠체어에 안전만 더하는 방법을 택했습니다.
-        </p>
-        <p class="source">출처: 한국보건사회연구원, 2023년 장애인 실태조사</p>
-      </header>
+    <header class="section-head reveal">
+      <p class="section-eyebrow">04. MARKET &amp; BUSINESS MODEL</p>
+      <h2 class="section-title">이미 성장 공식이 검증된<br><span class="text-accent">에이블테크</span> 시장</h2>
+      <p class="section-desc">
+        고령화와 기술 융합이 만드는 보조기기·에이블테크 시장은 빠르게 확장되고 있습니다.
+        연평균 8.9% 성장하는 글로벌 보조기술 시장과 271조 원 규모로 커지는 국내 시니어 산업이
+        파라클의 시장 기반입니다.
+      </p>
+    </header>
 
-      <div class="table-scroll reveal" data-delay="120">
-        <p class="table-hint" aria-hidden="true">좌우로 밀어서 전체 보기</p>
-        <div class="table-wrap" tabindex="0" role="group" aria-label="기존 방식과의 비교표 (좌우 스크롤 가능)">
-        <table class="compare-table">
-          <caption class="sr-only">캐스터 락 모듈과 기존 방식 비교</caption>
-          <thead>
-            <tr>
-              <th scope="col">구분</th>
-              <th scope="col" class="is-ours"><span class="th-brand">Paracle</span>캐스터 락 모듈</th>
-              <th scope="col">부착형 앞바퀴 <small>액세서리</small></th>
-              <th scope="col">전동·로봇 <small>휠체어</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">지금 휠체어 사용</th>
-              <td class="is-ours">그대로 사용</td>
-              <td>그대로 사용</td>
-              <td>휠체어 교체 필요</td>
-            </tr>
-            <tr>
-              <th scope="row">전력·충전</th>
-              <td class="is-ours">필요 없음</td>
-              <td>필요 없음</td>
-              <td>배터리 충전 필요</td>
-            </tr>
-            <tr>
-              <th scope="row">좁은 실내 회전</th>
-              <td class="is-ours">평소처럼 자유 회전</td>
-              <td>회전 반경 커짐</td>
-              <td>제품별 상이 (대형은 큼)</td>
-            </tr>
-            <tr>
-              <th scope="row">가격대</th>
-              <td class="is-ours">목표 약 5만 원대</td>
-              <td>약 80~120만 원대</td>
-              <td>약 500만~5,000만 원대</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="market-stats">
+      <div class="market-stat reveal" data-delay="0">
+        <p class="market-stat-value"><span class="counter" data-target="304">0</span><span class="unit">억 달러</span></p>
+        <p class="market-stat-label">2025년 글로벌 보조기술 시장</p>
+      </div>
+      <div class="market-stat reveal" data-delay="80">
+        <p class="market-stat-value"><span class="counter" data-target="652">0</span><span class="unit">억 달러</span></p>
+        <p class="market-stat-label">2034년 전망 <b>CAGR 8.9%</b></p>
+      </div>
+      <div class="market-stat reveal" data-delay="160">
+        <p class="market-stat-value"><span class="counter" data-target="271">0</span><span class="unit">조 원</span></p>
+        <p class="market-stat-label">2030년 국내 시니어 산업 규모(상단 전망)</p>
+      </div>
+      <div class="market-stat reveal" data-delay="240">
+        <p class="market-stat-value"><span class="counter" data-target="1613">0</span><span class="unit">만 명</span></p>
+        <p class="market-stat-label">국내 교통약자 (전체 인구의 31.5%)</p>
+      </div>
+    </div>
+    <p class="market-stats-foot">
+      ※ 시니어 산업 규모는 기관별 전망이 갈립니다 — 경희대 에이지테크연구소는 2030년 126조~271조 원
+      (271조 원은 상단 전망치), 경희대 고령친화융합연구센터는 168조 원으로 추정합니다.
+    </p>
+
+    <!-- 글로벌 보조기술 시장 성장 곡선. 사업계획서에 실린 두 실측 값(2025년 304억 달러,
+         2034년 652억 달러)만 근거이며, 그 사이 곡선은 두 값이 내포하는 CAGR로 보간한
+         추정선임을 각주로 명시한다 — 없는 정밀도를 지어내지 않는다. 두 값은 여러 시장조사기관
+         추정치 중 Custom Market Insights 발표치와 정확히 일치함을 확인했다(다른 기관들은
+         2025년 239~365억 달러, 2034년 483~882억 달러, CAGR 8.1~10.3%로 더 넓게 추정). -->
+    <div class="chart-panel reveal">
+      <div class="chart-head">
+        <h3>글로벌 보조기술 시장 성장 전망</h3>
+        <span class="chart-tag">CAGR 8.9%</span>
+        <p class="chart-sub">2025년 304억 달러에서 2034년 652억 달러로, 9년간 규모가 두 배 이상 커집니다.</p>
+      </div>
+
+      <div class="growth-chart-wrap">
+        <svg class="growth-svg" viewBox="0 0 600 230" role="img"
+             aria-label="글로벌 보조기술 시장 규모 성장 곡선. 2025년 304억 달러에서 2034년 652억 달러로 연평균 8.9% 성장.">
+          <line class="growth-baseline" x1="46" y1="190" x2="554" y2="190"/>
+
+          <path class="growth-area"
+                d="M46.0 173.2 L102.4 163.0 L158.9 151.8 L215.3 139.6 L271.8 126.4 L328.2 112.0 L384.7 96.3 L441.1 79.3 L497.6 60.7 L554.0 40.5 L554.0 190.0 L46.0 190.0 Z"/>
+          <path class="growth-line"
+                d="M46.0 173.2 L102.4 163.0 L158.9 151.8 L215.3 139.6 L271.8 126.4 L328.2 112.0 L384.7 96.3 L441.1 79.3 L497.6 60.7 L554.0 40.5"/>
+
+          <circle class="growth-dot is-start" cx="46.0" cy="173.2" r="5"/>
+          <circle class="growth-dot is-end" cx="554.0" cy="40.5" r="5"/>
+
+          <text class="growth-value-label is-start" x="46" y="158" text-anchor="start">304억 달러</text>
+          <text class="growth-tick-label" x="46" y="210" text-anchor="start">2025년</text>
+
+          <text class="growth-value-label is-end" x="554" y="26" text-anchor="end">652억 달러</text>
+          <text class="growth-tick-label" x="554" y="210" text-anchor="end">2034년</text>
+
+          <text class="growth-tick-label" x="328" y="210" text-anchor="middle">2030년</text>
+        </svg>
+      </div>
+      <p class="chart-foot">
+        ※ 2025년·2034년 값은 시장조사기관 Custom Market Insights 발표치이며, 중간 구간은 두 값에
+        내포된 연평균 성장률(8.9%)로 보간한 추정 곡선입니다. 다른 시장조사기관은 2025년 239~365억
+        달러, 2034년 483~882억 달러, CAGR 8.1~10.3%로 더 넓게 추정하는 등 기관별 편차가 있습니다.
+      </p>
+    </div>
+
+    <div class="market-split">
+      <div class="target-block reveal">
+        <h3 class="block-title">단계적 목표 시장</h3>
+        <ol class="target-list">
+          <li>
+            <span class="target-step">1차</span>
+            <div>
+              <h4>국내 등록 지체장애인</h4>
+              <p>2024년 기준 약 113만 명 — 전체 등록장애인 263만 명의 43.0% (수동·전동 휠체어, 목발 등 보행 보조기기 이용자 포함).
+              이 중 60세 이상이 73.4%로, 이미 시니어 인구와 크게 겹칩니다.</p>
+            </div>
+          </li>
+          <li>
+            <span class="target-step">2차</span>
+            <div>
+              <h4>고령 보행 보조기기 사용자</h4>
+              <p>등록장애인 중 65세 이상 비중 55.3%, 고령화와 함께 지속 증가</p>
+            </div>
+          </li>
+          <li>
+            <span class="target-step">3차</span>
+            <div>
+              <h4>교통약자 전반</h4>
+              <p>일시적 이동 제약을 겪는 인구 포함 약 1,613만 명 (전체 인구의 31.5%)</p>
+            </div>
+          </li>
+        </ol>
+        <p class="chart-foot">출처: 보건복지부 등록장애인 현황(2024), 한국보건사회연구원 '2023년 장애인 실태조사', 국토교통부(2024)</p>
+      </div>
+
+      <div class="bm-block reveal" data-delay="120">
+        <h3 class="block-title">비즈니스 모델</h3>
+        <div class="bm-cards">
+          <article class="bm-card">
+            <span class="bm-tag">B2C</span>
+            <p>온라인 복지 용구 쇼핑몰·보조기기 판매점 직접 판매, 장애인보조기구 복지 용구 급여 품목 등재를 통한 본인부담금 경감 판매</p>
+          </article>
+          <article class="bm-card">
+            <span class="bm-tag">B2G</span>
+            <p>지자체·복지시설 대상 공공 조달, 조달청 우수제품 등록을 통한 안정적 공급 채널 확보</p>
+          </article>
+          <article class="bm-card">
+            <span class="bm-tag">B2B</span>
+            <p>기존 휠체어 제조·유통사와의 OEM/번들 공급, 재활병원·복지관 장비 납품</p>
+          </article>
         </div>
-        <p class="source">
-          ※ 가격대는 대표 제품(FreeWheel, WHILL, Scewo)의 공식 판매가를 2026년 9월 환율로 환산한 추정치이며,
-          파라클 목표 가격은 부품 원가·제조 방식 검토 후 확정됩니다.
-        </p>
+      </div>
+    </div>
+
+    <div class="gtm reveal">
+      <h3 class="block-title">시장 진입 3단계</h3>
+      <div class="gtm-steps">
+        <div class="gtm-step">
+          <span class="gtm-num">STEP 1</span>
+          <h4>바이럴 효과</h4>
+          <p>복지관·재활병원 PoC로 실사용 후기와 정량 데이터를 확보하고, 체험 영상·블로그 콘텐츠 마케팅에 활용합니다.</p>
+        </div>
+        <div class="gtm-step">
+          <span class="gtm-num">STEP 2</span>
+          <h4>채널 확장</h4>
+          <p>장애인 자립생활센터, 보조기기 판매점, 온라인 복지 용구 쇼핑몰에 입점해 접점을 넓힙니다.</p>
+        </div>
+        <div class="gtm-step">
+          <span class="gtm-num">STEP 3</span>
+          <h4>신뢰 확산</h4>
+          <p>장애인 인플루언서 체험단을 운영하고, 지체장애인 커뮤니티·협회와 협업 캠페인을 진행합니다.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ VISION ============ -->
-<section class="section section-mist" id="vision">
+<!-- ============ ROADMAP ============ -->
+<section class="section section-light" id="roadmap">
   <div class="container">
-    <header class="section-head section-head-center reveal">
-      <p class="eyebrow">VISION</p>
-      <h2 class="title">휠체어 안전장치의 기준을 만듭니다</h2>
-      <p class="lead">
-        캐스터 락으로 시작해 가변 보조바퀴, 자율주행 휠체어까지 — 이동 약자가 대중교통과 일상 공간을
-        안전하고 자유롭게 이용할 수 있는 날을 향해 제품을 넓혀 갑니다.
+    <header class="section-head reveal">
+      <p class="section-eyebrow">05. ROADMAP</p>
+      <h2 class="section-title">근거를 <span class="text-accent">한 단계씩</span> 쌓아올립니다</h2>
+      <p class="section-desc">
+        FGI·설문으로 문제를 정량화하고, 설계와 목업으로 검증하고, 특허와 현장 실증으로 신뢰를 확보한 뒤
+        양산과 인증으로 나아갑니다.
       </p>
     </header>
 
     <ol class="timeline">
-      <li class="tl-item is-now reveal" data-delay="0">
-        <p class="tl-year">2026</p>
-        <figure><img src="assets/deck/caster-locked.webp" alt="" width="900" height="693" loading="lazy"></figure>
-        <h3>캐스터 락 모듈</h3>
-        <p>기존 수동 휠체어에 다는 캐스터휠 고정장치. 현재 개발 중인 첫 제품입니다.</p>
+      <li class="timeline-item reveal" data-delay="0">
+        <span class="timeline-marker">1</span>
+        <div class="timeline-body">
+          <h3>수요 정량화</h3>
+          <p>휠체어 이용자·재활 전문가 대상 FGI·설문으로 장애물 유형별 불편도를 정량화하고 목표 성능 스펙을 수치로 확정합니다.</p>
+        </div>
       </li>
-      <li class="tl-item reveal" data-delay="120">
-        <p class="tl-year">2027 – 2028</p>
-        <figure><img src="assets/deck/rm-variable-wheel.webp" alt="" width="616" height="311" loading="lazy"></figure>
-        <h3>가변 보조바퀴</h3>
-        <p>상황에 따라 지름이 바뀌는 보조바퀴로 더 높은 턱과 넓은 틈에 대응합니다.</p>
+      <li class="timeline-item reveal" data-delay="80">
+        <span class="timeline-marker">2</span>
+        <div class="timeline-body">
+          <h3>구조 설계·시뮬레이션</h3>
+          <p>캐스터 락 메커니즘의 구조를 설계하고 3D 모델링·시뮬레이션으로 예상 무게와 장착 소요 시간을 산출합니다.</p>
+        </div>
       </li>
-      <li class="tl-item reveal" data-delay="240">
-        <p class="tl-year">2029 – 2030</p>
-        <figure><img src="assets/deck/rm-autonomous.webp" alt="" width="900" height="600" loading="lazy"></figure>
-        <h3>자율주행 휠체어</h3>
-        <p>센서로 장애물과 경로를 인식하는 자율주행 휠체어로 이동의 범위를 넓힙니다.</p>
+      <li class="timeline-item reveal" data-delay="160">
+        <span class="timeline-marker">3</span>
+        <div class="timeline-body">
+          <h3>목업·테스트베드 검증</h3>
+          <p>3D 프린팅 목업과 시제품을 제작해 문턱·보도블록·지하철 틈을 재현한 테스트베드에서 반복 개폐 내구 시험을 진행합니다.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal" data-delay="240">
+        <span class="timeline-marker">4</span>
+        <div class="timeline-body">
+          <h3>핵심 특허 출원</h3>
+          <p>선행기술조사를 별도 일정으로 확보하고, 필요 시 회피 설계와 신규 청구항을 동시에 준비해 락 메커니즘 특허를 출원합니다.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal" data-delay="320">
+        <span class="timeline-marker">5</span>
+        <div class="timeline-body">
+          <h3>현장 실증(PoC) → 양산</h3>
+          <p>복지관·협력 병원 현장 실증으로 데이터를 확보하고, 양산 설계와 안전 인증 준비로 이어갑니다.</p>
+        </div>
       </li>
     </ol>
-  </div>
-</section>
 
-<!-- ============ PARTNERSHIP ============ -->
-<section class="section section-white" id="partners">
-  <div class="container">
-    <header class="section-head reveal">
-      <p class="eyebrow">PARTNERSHIP</p>
-      <h2 class="title">함께 틈을 메울 파트너를 찾습니다</h2>
-      <p class="lead">현장 검증부터 유통, 제조, 공공 도입까지 — 이동 약자의 일상을 바꾸는 일을 함께해 주세요.</p>
-    </header>
-
-    <ul class="partners">
-      <li class="partner reveal" data-delay="0">
-        <h3>복지관·재활병원</h3>
-        <p>무상 체험 파일럿과 현장 실증(PoC)에 참여해 실제 이용자의 피드백을 함께 만들어 갑니다.</p>
-      </li>
-      <li class="partner reveal" data-delay="80">
-        <h3>유통·판매 파트너</h3>
-        <p>보조기기 판매점, 장애인 자립생활센터, 온라인 복지 용구 쇼핑몰을 통해 이용자를 만납니다.</p>
-      </li>
-      <li class="partner reveal" data-delay="160">
-        <h3>휠체어 제조사</h3>
-        <p>OEM·번들 공급으로 새 휠체어에 캐스터 락을 기본 탑재하는 방안을 함께 검토합니다.</p>
-      </li>
-      <li class="partner reveal" data-delay="240">
-        <h3>공공기관·지자체</h3>
-        <p>복지 용구 급여 품목 등재와 공공 조달로, 필요한 분들이 부담 없이 쓸 수 있게 합니다.</p>
-      </li>
-    </ul>
-    <p class="partners-note reveal">ESG·임팩트 투자에 관심 있는 기관의 연락도 환영합니다. <a href="#contact">파트너십 문의하기 →</a></p>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section class="section section-mist" id="faq">
-  <div class="container faq-inner">
-    <header class="section-head reveal">
-      <p class="eyebrow">FAQ</p>
-      <h2 class="title">자주 묻는 질문</h2>
-    </header>
-    <div class="faq reveal">
-      <details>
-        <summary>지금 쓰는 휠체어에 달 수 있나요?</summary>
-        <p>기존 수동 휠체어의 앞바퀴(캐스터) 모듈에 장착하는 탈부착형으로 설계하고 있습니다. 휠체어 모델별 호환 범위는 시제품 검증을 거쳐 확정해 안내드리겠습니다.</p>
-      </details>
-      <details>
-        <summary>전기나 충전이 필요한가요?</summary>
-        <p>필요 없습니다. 배터리와 모터 없이 레버와 기계 구조만으로 작동하는 무전력 방식입니다.</p>
-      </details>
-      <details>
-        <summary>평소 실내에서 움직이기 불편해지지 않나요?</summary>
-        <p>잠그지 않은 평상시에는 캐스터가 지금처럼 자유롭게 회전합니다. 문턱이나 틈 앞에서만 레버로 잠그고, 지나간 뒤에는 다시 풀면 됩니다.</p>
-      </details>
-      <details>
-        <summary>가격과 출시 시기는 어떻게 되나요?</summary>
-        <p>목표 소비자가는 약 5만 원대이며, 부품 원가와 제조 방식 검토를 거쳐 확정합니다. 현재 개발 단계로, 출시 일정이 정해지면 이 페이지와 문의 주신 분들께 안내드리겠습니다.</p>
-      </details>
-      <details>
-        <summary>복지 지원을 받아 구입할 수 있나요?</summary>
-        <p>장애인보조기구 복지 용구 급여 품목 등재를 추진하고 있습니다. 등재가 확정되면 본인부담금 경감 방법을 함께 안내드리겠습니다.</p>
-      </details>
+    <div class="rounds reveal">
+      <h3 class="block-title">스케일업 성장 경로</h3>
+      <p class="rounds-desc">
+        에이블테크 시장에서 이미 검증된 성장 공식을 따릅니다.
+        새로운 보조기기 카테고리를 만들고, 실증 데이터로 신뢰를 확보한 뒤, 제도권 채널과 투자로 확장합니다.
+      </p>
+      <div class="round-grid">
+        <article class="round-card">
+          <header><span class="round-tag">STEP 1</span><span class="round-phase">실증</span></header>
+          <p>복지관·재활병원 현장 실증(PoC)으로 성능과 안전성에 대한 정량 데이터를 확보합니다.</p>
+          <p class="round-fund">신뢰의 근거 확보</p>
+        </article>
+        <article class="round-card">
+          <header><span class="round-tag">STEP 2</span><span class="round-phase">특허</span></header>
+          <p>국내 이동 환경에 최적화한 락 메커니즘 청구항으로 모방이 어려운 진입장벽을 구축합니다.</p>
+          <p class="round-fund">기술 방어권 확보</p>
+        </article>
+        <article class="round-card">
+          <header><span class="round-tag">STEP 3</span><span class="round-phase">제도권 진입</span></header>
+          <p>장애인보조기구 복지 용구 급여 품목 등재와 조달청 우수제품 등록으로 안정적 판로를 엽니다.</p>
+          <p class="round-fund">공공 채널 확보</p>
+        </article>
+        <article class="round-card is-final">
+          <header><span class="round-tag">STEP 4</span><span class="round-phase">스케일업</span></header>
+          <p>양산 설계와 안전 인증을 마치고, 투자 유치를 통해 생산 규모와 판매 채널을 확장합니다.</p>
+          <p class="round-fund">양산·투자 유치</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="section section-dark" id="contact">
-  <div class="contact-media" aria-hidden="true">
-    <img src="assets/deck/hero-caster.jpg" alt="" width="1456" height="816" loading="lazy">
+<!-- ============ ABOUT ============ -->
+<section class="section section-navy" id="about">
+  <div class="container about-inner">
+    <div class="about-copy reveal">
+      <p class="section-eyebrow">06. ABOUT US</p>
+      <h2 class="section-title">이동 약자가 <span class="text-accent">스스로</span><br>일상을 건널 수 있도록</h2>
+      <p class="about-text">
+        파라클 모빌리티(Paracle Mobility)는 단순한 이동 보조기기 부품 회사가 아닙니다.
+        이동 약자가 매일 마주하는 <strong>승하차, 문턱, 틈 — 반복되는 일상의 장벽</strong>을 해결해
+        독립적인 삶과 안전을 보장하는 애프터마켓 모빌리티 솔루션 기업입니다.
+      </p>
+      <p class="about-text">
+        1차적으로는 수동 휠체어에 부착하는 기계식 캐스터 락 모듈로 시작해,
+        장기적으로는 전동 휠체어와 가변 바퀴 개발로 확장합니다.
+        궁극적으로 이동 약자가 대중교통과 일상 공간을 안전하고 자유롭게 이용할 수 있도록 보장하는
+        <strong>휠체어 안전장치 대표 브랜드</strong>로 자리매김하는 것이 목표입니다.
+      </p>
+
+      <div class="values">
+        <div class="value">
+          <h4>Safety</h4>
+          <p>넘어지지 않는다는 확신이 이동의 시작입니다.</p>
+        </div>
+        <div class="value">
+          <h4>Mobility</h4>
+          <p>도움을 기다리지 않고 스스로 건널 수 있어야 합니다.</p>
+        </div>
+        <div class="value">
+          <h4>Accessibility</h4>
+          <p>누구나 감당할 수 있는 가격이어야 진짜 해법입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="about-card reveal" data-delay="120">
+      <img src="assets/paracle-logo-white.png" alt="" class="about-card-logo">
+      <dl class="about-meta">
+        <div><dt>브랜드</dt><dd>Paracle Mobility</dd></div>
+        <div><dt>아이템</dt><dd>캐스터 락 보조 바퀴 모듈</dd></div>
+        <div><dt>대표</dt><dd>하영호</dd></div>
+        <div><dt>핵심 기술</dt><dd>무전력 기계식 캐스터 락</dd></div>
+        <div><dt>주력 분야</dt><dd>에이블테크·이동 보조기기</dd></div>
+      </dl>
+      <p class="about-card-quote">
+        “인프라가 갖춰진 뒤에도<br>승하차 순간의 틈은 그대로 남아 있었다.”
+      </p>
+    </aside>
   </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section-cta" id="contact">
   <div class="container cta-inner reveal">
-    <p class="eyebrow">CONTACT</p>
-    <h2 class="title">도입·협업 문의</h2>
+    <h2 class="cta-title">함께 <span class="text-accent">틈</span>을 메울 파트너를 찾습니다</h2>
     <p class="cta-desc">
-      현장 실증(PoC), 유통·제조 협력, 공공 도입, ESG·임팩트 투자 등 어떤 이야기든 편하게 남겨 주세요.
+      복지관·재활병원 현장 실증(PoC), 보조기기 유통 협력, ESG·임팩트 투자에 관심 있는 분들의 연락을 기다립니다.
     </p>
     <!-- Formspree로 전송됩니다. 받는 주소는 formspree.io 대시보드에서 변경하세요.
          엔드포인트를 교체할 때는 js/main.js의 미설정 판정 조건('YOUR_FORM_ID')도 함께 확인할 것. -->
@@ -579,36 +818,30 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <img src="assets/paracle-logo-white.png" alt="Paracle Mobility" class="footer-logo">
-      <p>일상의 틈을 넘다 — <br>이동 약자의 안전하고 이동성 있는 삶을 만듭니다.</p>
+      <p>이동 약자의 안전하고 이동성 있는 삶<br>(Safety &amp; Mobility)을 만듭니다.</p>
     </div>
     <nav class="footer-nav" aria-label="푸터 메뉴">
       <div>
         <h5>회사</h5>
         <ul>
-          <li><a href="#about">브랜드 스토리</a></li>
-          <li><a href="#vision">비전</a></li>
-          <li><a href="#partners">파트너십</a></li>
+          <li><a href="#about">회사 소개</a></li>
+          <li><a href="#roadmap">로드맵</a></li>
+          <li><a href="#contact">문의하기</a></li>
         </ul>
       </div>
       <div>
         <h5>제품</h5>
         <ul>
-          <li><a href="#product">캐스터 락 모듈</a></li>
-          <li><a href="#technology">기술</a></li>
-          <li><a href="#faq">자주 묻는 질문</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>문의</h5>
-        <ul>
-          <li><a href="#contact">도입·협업 문의</a></li>
+          <li><a href="#solution">캐스터 락 모듈</a></li>
+          <li><a href="#advantage">비교우위</a></li>
+          <li><a href="#market">시장·BM</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <div class="container footer-bottom">
     <small>© <span id="year">2026</span> Paracle Mobility. All rights reserved.</small>
-    <small>인용 통계 출처: 보건복지부 · 국토교통부 · 한국소비자원 · 한국보건사회연구원 공개 자료</small>
+    <small>본 사이트에 인용된 통계는 국토교통부·한국소비자원·보건복지부 등 공개 자료를 근거로 합니다.</small>
   </div>
 </footer>
 
@@ -616,6 +849,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="js/main.js?v=27"></script>
+<script src="js/main.js?v=24"></script>
 </body>
 </html>
